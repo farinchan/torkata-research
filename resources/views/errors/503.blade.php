@@ -13,8 +13,8 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="author" content="Jthemes"/>
-		<meta name="description" content="PowerNode - Premium Multi-Purpose Landing Page Template"/>
-		<meta name="keywords" content="HTML5 template, Jthemes, Multi-Purpose, Startup, One Page, Landing, Business, Creative, Corporate, Agency Template, Project, Mobile App">
+		<meta name="description" content="Torkata Research - Publication, Research, and Education">
+		<meta name="keywords" content="Torkata, Torkata Research, Research, Publication, Education">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   		<!-- SITE TITLE -->
