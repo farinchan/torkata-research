@@ -109,7 +109,7 @@
 									{{-- <div class="hero-logo"><img src="{{ asset("front/images/logo-white.png") }}" alt="header-logo"></div> --}}
 
 									<!-- Title -->
-                                    <h3 class="h3-md">The Torkata Research website is under maintenance. Please check back later. Thank you.</h3>
+                                    <h3 class="h3-md">Torkata Research is currently under maintenance</h3>
 
                                     <!-- Text -->
                                     <p class="p-xl">Please wait a moment. A new look, new features, and a faster interface are coming soon.</p>
