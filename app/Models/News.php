@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Illuminate\Support\Str;
 
 class News extends Model
 {
@@ -43,6 +44,12 @@ class News extends Model
     }
 
     public function getThumbnail(){
-        return $this->thumbnail ? Storage::url($this->thumbnail) : 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg';
+        if (!$this->thumbnail) {
+            return 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg';
+        }
+        if (Str::startsWith(trim($this->thumbnail), ['http://', 'https://'])) {
+            return $this->thumbnail;
+        }
+        return Storage::url($this->thumbnail);
     }
 }

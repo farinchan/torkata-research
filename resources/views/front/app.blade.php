@@ -46,7 +46,7 @@
 
     <!-- TEMPLATE CSS -->
     <!-- <link href="css/azure-theme.css" rel="stylesheet">     -->
-    <!-- <link href="css/blue-theme.css" rel="stylesheet">      -->
+     <link href="{{ asset('front/css/blue-theme.css') }}" rel="stylesheet">
     <!-- <link href="css/brown-theme.css" rel="stylesheet">     -->
     <!-- <link href="css/dimgreen-theme.css" rel="stylesheet">  -->
     <!-- <link href="css/olive-theme.css" rel="stylesheet">     -->
@@ -55,9 +55,9 @@
     <!-- <link href="css/red-theme.css" rel="stylesheet">       -->
     <!-- <link href="css/rose-theme.css" rel="stylesheet">      -->
     <!-- <link href="css/royalblue-theme.css" rel="stylesheet"> -->
-    <!-- <link href="css/skyblue-theme.css" rel="stylesheet">   -->
+    {{-- <link href="{{ asset('front/css/skyblue-theme.css') }}" rel="stylesheet"> --}}
     <!-- <link href="css/violet-theme.css" rel="stylesheet">    -->
-    <link href="{{ asset('front/css/yellow-theme.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('front/css/yellow-theme.css') }}" rel="stylesheet"> --}}
 
     <!-- ON SCROLL ANIMATION -->
     <link href="{{ asset('front/css/animate.css') }}" rel="stylesheet">
@@ -88,8 +88,11 @@
   ============================================= -->
     <div id="page" class="page">
 
-
-
+        @if(route('home') == url()->current())
+            @include('front.partials.hero')
+        @else
+            @include('front.partials.breadcrumb')
+        @endif
 
         <!-- HEADER
    ============================================= -->
@@ -97,7 +100,7 @@
         <!-- END HEADER -->
 
 
-@yield('content')
+        @yield('content')
 
 
 
@@ -140,6 +143,10 @@
 
     <!-- Custom Script -->
     <script src="{{ asset('front/js/custom.js') }}"></script>
+
+    @include('sweetalert::alert')
+
+    @yield('scripts')
 
     <!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->
     <!--

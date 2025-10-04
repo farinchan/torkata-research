@@ -95,7 +95,7 @@
 
 
                         <!-- MEGAMENU -->
-                        <li aria-haspopup="true"><a href="#">Berita<span class="wsarrow"></span></a>
+                        <li aria-haspopup="true"><a href="{{ route('news.index') }}">Berita<span class="wsarrow"></span></a>
                             <div class="wsmegamenu clearfix">
                                 <div class="container">
                                     <div class="row">
@@ -131,7 +131,7 @@
 
                                             <!-- Text -->
                                             <h6 class="h6-md">
-                                                <a href="single-post.html">
+                                                <a href="{{ route('news.detail', $news_popular->slug) }}">
                                                     {{ $news_popular->title }}
                                                 </a>
                                             </h6>

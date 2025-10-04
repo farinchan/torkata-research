@@ -1,10 +1,19 @@
 @extends('front.app')
+@section('seo')
+    <title>{{ $meta['description'] }}</title>
+    <meta name="description" content="{{ $meta['description'] }}">
+    <meta name="keywords" content="{{ $meta['keywords'] }}">
+    <meta name="author" content="Torkata Research">
 
+    <meta property="og:title" content="{{ $meta['title'] }}">
+    <meta property="og:description" content="{{ $meta['description'] }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ route('home') }}">
+    <link rel="canonical" href="{{ route('home') }}">
+    <meta property="og:image" content="{{ Storage::url($meta['favicon']) }}">
+@endsection
 @section('content')
-    <!-- HERO-13
-                       ============================================= -->
-    @include('front.partials.hero')
-    <!-- END HERO-13 -->
+
 
     <!-- HERO-4
                        ============================================= -->
@@ -181,7 +190,7 @@
 
                         <!-- Title 	-->
                         <h2 class="h2-xs">
-                            Latest News & Articles
+                            Berita Terbaru
                         </h2>
 
                         <!-- Text -->
@@ -344,7 +353,7 @@
 
                         <!-- Title -->
                         <h4 class="h4-md">
-                            Kami mengelola beberapa jurnal yang cocok untuk anda
+                            Kami mengelola beberapa jurnal yang mungkin cocok untuk anda
                     </div>
                 </div>
             </div>

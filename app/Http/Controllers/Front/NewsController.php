@@ -80,7 +80,7 @@ class NewsController extends Controller
             'news' => $news,
             'prev_news' => News::where('id', '<', $news->id)->latest()->first(),
             'next_news' => News::where('id', '>', $news->id)->latest()->first(),
-            'news_trending' => News::withCount('viewers')->orderByDesc('viewers_count')->take(5)->get(),
+            'news_trending' => News::withCount('viewers')->orderByDesc('viewers_count')->take(3)->get(),
             'categories' => NewsCategory::with('news')->get(),
         ];
         return view('front.pages.news.detail', $data);
