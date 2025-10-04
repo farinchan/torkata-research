@@ -21,10 +21,10 @@
 
 
                 <!-- HEADER LOGO -->
-                <div class="desktoplogo"><a href="#hero-13" class="logo-black"><img src="{{ $setting_web?->getLogo() ?? '' }}"
-                            alt="header-logo"></a></div>
-                <div class="desktoplogo"><a href="#hero-13" class="logo-white"><img src="{{ $setting_web?->getLogo() ?? '' }}"
-                            alt="header-logo"></a></div>
+                <div class="desktoplogo"><a href="#hero-13" class="logo-black"><img
+                            src="{{ $setting_web?->getLogo() ?? '' }}" alt="header-logo"></a></div>
+                <div class="desktoplogo"><a href="#hero-13" class="logo-white"><img
+                            src="{{ $setting_web?->getLogo() ?? '' }}" alt="header-logo"></a></div>
 
 
                 <!-- MAIN MENU -->
@@ -95,7 +95,8 @@
 
 
                         <!-- MEGAMENU -->
-                        <li aria-haspopup="true"><a href="{{ route('news.index') }}">Berita<span class="wsarrow"></span></a>
+                        <li aria-haspopup="true"><a href="{{ route('news.index') }}">Berita<span
+                                    class="wsarrow"></span></a>
                             <div class="wsmegamenu clearfix">
                                 <div class="container">
                                     <div class="row">
@@ -126,7 +127,8 @@
 
                                             <!-- Image -->
                                             <div class="fluid-width-video-wrapper mb-15"><img
-                                                    src="{{ $news_popular->getThumbnail() }}" alt="featured-news" style="width: 100%; height: 200px; object-fit: cover;" />
+                                                    src="{{ $news_popular->getThumbnail() }}" alt="featured-news"
+                                                    style="width: 100%; height: 200px; object-fit: cover;" />
                                             </div>
 
                                             <!-- Text -->
@@ -158,8 +160,8 @@
                                                     <li class="clearfix d-flex align-items-center">
 
                                                         <!-- Image -->
-                                                        <img class="img-fluid"
-                                                            src="{{ $news->getThumbnail() }}" alt="blog-post-preview" />
+                                                        <img class="img-fluid" src="{{ $news->getThumbnail() }}"
+                                                            alt="blog-post-preview" />
 
                                                         <!-- Text -->
                                                         <div class="post-summary">
@@ -183,13 +185,46 @@
                         <!-- SIMPLE NAVIGATION LINK -->
                         <li class="nl-simple" aria-haspopup="true"><a href="#faqs-1">Kontak</a></li>
 
-
+                        @guest
+                        <li aria-haspopup="true">
+                            <a href="#"><span class="flaticon-user"></span>&nbsp;User</a>
+                            <ul class="sub-menu">
+                                <li aria-haspopup="true">
+                                    <a href="{{ route('login') }}">Masuk</a>
+                                </li>
+                                <li aria-haspopup="true">
+                                    <a href="{{ route('register') }}">Daftar</a>
+                                </li>
+                            </ul>
+                        </li>
+                        @else
+                        <li aria-haspopup="true">
+                            <a href="#"><span class="flaticon-user"></span>&nbsp;{{ Auth::user()->name }}</a>
+                            <ul class="sub-menu">
+                                <li aria-haspopup="true">
+                                    <a href="{{ route('profil.show') }}">Profil Saya</a>
+                                </li>
+                                <li aria-haspopup="true">
+                                    <a href="{{ route('dashboard') }}">Dashboard</a>
+                                </li>
+                                <li aria-haspopup="true">
+                                    <a href="{{ route('logout') }}"
+                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        Keluar
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                        @endguest
                         {{-- HEADER CALL BUTTON --}}
-                        <li class="nl-simple header-phone ico-25" aria-haspopup="true">
+                        {{-- <li class="nl-simple header-phone ico-25" aria-haspopup="true">
                             <a href="tel:123456789">
                                 <span class="flaticon-phone-call bg-white theme-color"></span>+12 9 8765 4321
                             </a>
-                        </li>
+                        </li> --}}
 
 
                         <!-- HEADER BUTTON -->
@@ -197,6 +232,7 @@
                                     <a href="#cta-6" class="btn btn-theme tra-white-hover last-link">Let's
                                         Started</a>
                                 </li> --}}
+
 
 
                         {{-- HEADER SOCIAL LINKS --}}

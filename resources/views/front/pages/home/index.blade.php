@@ -41,7 +41,7 @@
                 <div class="col-lg-5">
                     <div class="hero-4-txt pc-25">
                         <p class="p-lg grey-color">
-                            Kami adalah unit dari Torkata Tech solutio nyang berfokus pada publikasi ilmiah, penelitian
+                            Kami adalah unit dari Torkata Tech solution yang berfokus pada publikasi ilmiah, penelitian
                             terapan, serta pelatihan dan edukasi di berbagai bidang ilmu pengetahuan dan teknologi untuk
                             mendukung kemajuan ilmu pengetahuan dan inovasi di Indonesia.
                         </p>
