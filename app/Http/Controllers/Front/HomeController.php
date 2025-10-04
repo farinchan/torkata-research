@@ -28,6 +28,7 @@ class HomeController extends Controller
                 'keywords' => $setting_web->name . ', Journal, Research, OJS System, Open Journal System, Research Journal, Academic Journal, Publication',
                 'favicon' => $setting_web->favicon
             ],
+            'setting_web' => $setting_web,
             'list_news' => News::latest()->where('status', 'published')->limit(10)->get(),
             'list_journal' => Journal::take(3),
             'welcome_speech' => WelcomeSpeech::first(),
