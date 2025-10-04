@@ -10,23 +10,24 @@
                         <div class="hero-13-txt text-center white-color">
 
                             <!-- Title -->
-                            <h3 class="h3-lg">Over 2000+ companies are already using PowerNode every day</h3>
+                            <h3 class="h3-lg">Torkata Research: Publication, Research, Training & Education</h3>
 
                             <!-- Text -->
-                            <p class="p-xl">Feugiat primis ligula risus auctor augue laoreet justo egestas mauris
-                                augue
-                                egestas and mauris viverra tortor in iaculis magna feugiat mauris
+                            <p class="p-xl">
+                                Mendukung kemajuan ilmu pengetahuan dan inovasi di Indonesia melalui publikasi ilmiah,
+                                penelitian terapan, serta pelatihan dan edukasi di berbagai bidang ilmu pengetahuan dan
+                                teknologi.
                             </p>
 
                             <!-- Buttons Group -->
-                            <div class="btns-group mb-25">
+                            {{-- <div class="btns-group mb-25">
                                 <a href="#cta-6" class="btn btn-md btn-theme tra-white-hover mr-15">Start Free
                                     Trial</a>
                                 <a href="https://www.youtube.com/embed/7e90gBu4pas"
                                     class="video-popup2 btn btn-md btn-video-link ico-30">
                                     <span class="flaticon-play-button-1"></span> Take Quick Tour
                                 </a>
-                            </div>
+                            </div> --}}
 
                             <!-- HERO IMAGE -->
                             <div class="hero-13-img video-preview">

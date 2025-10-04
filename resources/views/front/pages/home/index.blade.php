@@ -23,7 +23,7 @@
                         <div class="section-id grey-color">Tentang Kami</div>
 
                         <!-- Title -->
-                        <h2 class="h2-xl deepgrey-color">Kami Mempublikasikan Karya Ilmiah dan Penelitian</h2>
+                        <h2 class="h2-xl deepgrey-color">Publikasikan Karya Ilmiah dan Penelitian</h2>
 
                     </div>
                 </div>
@@ -32,7 +32,7 @@
                 <div class="col-lg-5">
                     <div class="hero-4-txt pc-25">
                         <p class="p-lg grey-color">
-                            Kami adalah lembaga penelitian dan pengembangan yang berfokus pada publikasi ilmiah, penelitian
+                            Kami adalah unit dari Torkata Tech solutio nyang berfokus pada publikasi ilmiah, penelitian
                             terapan, serta pelatihan dan edukasi di berbagai bidang ilmu pengetahuan dan teknologi untuk
                             mendukung kemajuan ilmu pengetahuan dan inovasi di Indonesia.
                         </p>
