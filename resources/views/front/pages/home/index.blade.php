@@ -13,10 +13,8 @@
     <meta property="og:image" content="{{ Storage::url($meta['favicon']) }}">
 @endsection
 @section('content')
-
-
     <!-- HERO-4
-                       ============================================= -->
+                           ============================================= -->
     <section id="hero-4" class="hero-section division">
         <div class="container">
 
@@ -85,7 +83,7 @@
 
 
     <!-- FEATURES-2
-                       ============================================= -->
+                           ============================================= -->
     <section id="features-2" class="wide-60 features-section division">
         <div class="container">
 
@@ -178,7 +176,7 @@
 
 
     <!-- BLOG-1
-                       ============================================= -->
+                           ============================================= -->
     <section id="blog-1" class="bg-lightgrey wide-60 reviews-section division">
         <div class="container">
 
@@ -267,7 +265,7 @@
 
 
     <!-- STATISTIC-4
-                       ============================================= -->
+                           ============================================= -->
     <section id="statistic-4" class="bg-07 statistic-section division">
         <div class="container white-color">
             <div class="row">
@@ -338,7 +336,7 @@
 
 
     <!-- FEATURES-10
-                   ============================================= -->
+                       ============================================= -->
     <section id="features-10" class="wide-40 features-section division">
         <div class="container">
 
@@ -363,59 +361,24 @@
             <div class="fbox-10-wrapper">
                 <div class="row">
 
+                    @foreach ($list_journal as $journal)
+                        <!-- FEATURE BOX #{{ $loop->iteration }} -->
+                        <div class="col-md-4 col-lg-4">
+                            <div id="fb-10-{{ $loop->iteration }}" class="fbox-10 pc-10 mb-40 wow fadeInUp"
+                                data-wow-delay="{{ 0.2 + $loop->iteration * 0.2 }}s">
 
-                    <!--  FEATURE BOX #1 -->
-                    <div class="col-md-4">
-                        <div id="fb-10-1" class="fbox-10 pc-10 mb-40 wow fadeInUp" data-wow-delay="0.4s">
+                                <!-- Image -->
+                                <div class="fbox-img radius-04"><img class="img-fluid"
+                                        src="{{ $journal->getJournalThumbnail() }}" alt="features-image"></div>
 
-                            <!-- Image -->
-                            <div class="fbox-img radius-04"><img class="img-fluid"
-                                    src="{{ asset('front/images/img-15.jpg') }}" alt="features-image"></div>
+                                <!-- Text -->
+                                <h5 class="h5-sm">{{ $journal->title }}</h5>
+                                <p class="p-md grey-color">{{ Str::limit(strip_tags($journal->description), 100) }}</p>
 
-                            <!-- Text -->
-                            <h5 class="h5-sm">Creative Design</h5>
-                            <p class="p-md grey-color">Ligula risus auctor tempus dolor feugiat lacinia purus ipsum primis
-                                suscipit and aliquet porta rutrum at tempus dolor
-                            </p>
-
+                            </div>
                         </div>
-                    </div>
+                    @endforeach
 
-
-                    <!-- FEATURE BOX #2 -->
-                    <div class="col-md-4 col-lg-4">
-                        <div id="fb-10-2" class="fbox-10 pc-10 mb-40 wow fadeInUp" data-wow-delay="0.6s">
-
-                            <!-- Image -->
-                            <div class="fbox-img radius-04"><img class="img-fluid"
-                                    src="{{ asset('front/images/img-16.jpg') }}" alt="features-image"></div>
-
-                            <!-- Text -->
-                            <h5 class="h5-sm">Effect Of Presence</h5>
-                            <p class="p-md grey-color">Ligula risus auctor tempus dolor feugiat lacinia purus ipsum primis
-                                suscipit and aliquet porta rutrum at tempus dolor
-                            </p>
-
-                        </div>
-                    </div>
-
-
-                    <!-- FEATURE BOX #3 -->
-                    <div class="col-md-4 col-lg-4">
-                        <div id="fb-10-3" class="fbox-10 pc-10 mb-40 wow fadeInUp" data-wow-delay="0.8s">
-
-                            <!-- Image -->
-                            <div class="fbox-img radius-04"><img class="img-fluid"
-                                    src="{{ asset('front/images/img-17.jpg') }}" alt="features-image"></div>
-
-                            <!-- Text -->
-                            <h5 class="h5-sm">Online Marketing</h5>
-                            <p class="p-md grey-color">Ligula risus auctor tempus dolor feugiat lacinia purus ipsum primis
-                                suscipit and aliquet porta rutrum at tempus dolor
-                            </p>
-
-                        </div>
-                    </div>
 
 
                 </div> <!-- End row -->
@@ -428,7 +391,7 @@
 
 
     <!-- CONTENT-6
-                       ============================================= -->
+                           ============================================= -->
     <section id="content-6" class="wide-60 content-section division">
         <div class="container">
             <div class="row d-flex align-items-center m-row">
@@ -485,7 +448,7 @@
 
 
     <!-- TESTIMONIALS-3
-               ============================================= -->
+                   ============================================= -->
     <section id="reviews-3" class="wide-100 reviews-section division">
         <div class="container">
 
@@ -869,7 +832,7 @@
 
 
     <!-- CALL TO ACTION-6
-       ============================================= -->
+           ============================================= -->
     <section id="cta-6" class="bg-desktop bg-fixed wide-60 cta-section division">
         <div class="container">
             <div class="row d-flex align-items-center">
@@ -885,7 +848,8 @@
                         <!-- Text -->
                         <p class="p-md">
                             Kami membuka peluang kerja sama dengan berbagai institusi, peneliti, dan akademisi untuk
-                            mengembangkan ilmu pengetahuan dan teknologi melalui penelitian dan publikasi ilmiah. seperti pembuatan OJS dan tema nya, Pelatihan, Workshop, dan lain-lain.
+                            mengembangkan ilmu pengetahuan dan teknologi melalui penelitian dan publikasi ilmiah. seperti
+                            pembuatan OJS dan tema nya, Pelatihan, Workshop, dan lain-lain.
                         </p>
 
                     </div>

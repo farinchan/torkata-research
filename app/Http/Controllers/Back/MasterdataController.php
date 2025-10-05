@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
+use Spatie\Permission\Models\Permission;
 
 class MasterdataController extends Controller
 {
@@ -77,6 +78,7 @@ class MasterdataController extends Controller
     public function journalDestroy($id)
     {
         $journal = Journal::find($id);
+
         $journal->delete();
 
         Alert::success('Berhasil', 'Data berhasil dihapus');
