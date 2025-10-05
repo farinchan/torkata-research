@@ -5,23 +5,19 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="author" content="Jthemes" />
-    <meta name="description" content="PowerNode - Premium Multi-Purpose Landing Page Template" />
-    <meta name="keywords"
-        content="HTML5 template, Jthemes, Multi-Purpose, Startup, One Page, Landing, Business, Creative, Corporate, Agency Template, Project, Mobile App">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- SITE TITLE -->
-    <title>PowerNode - Premium Multi-Purpose Landing Page Template</title>
+    <title>
+        @isset($title)
+            {{ $title }} |
+        @endisset
+        {{ $setting_web->name }}
+    </title>
+        @yield('seo')
+        <link rel="shortcut icon" href="{{ Storage::url($setting_web->favicon) }}">
 
-    <!-- FAVICON AND TOUCH ICONS -->
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="152x152" href="images/apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="images/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="images/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    <link rel="icon" href="images/apple-touch-icon.png" type="image/x-icon">
 
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
