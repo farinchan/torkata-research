@@ -26,7 +26,7 @@ return new class extends Migration
             $table->json('indexing')->nullable();
             $table->json('indexing_others')->nullable();
             $table->string('api_key');
-            $table->enum('ojs_version', ['3.3', '3.4']);
+            $table->enum('ojs_version', ['3.3', '3.4', '3.5']);
             $table->dateTime('last_sync');
             $table->string('editor_chief_name')->nullable();
             $table->string('editor_chief_signature')->nullable();
