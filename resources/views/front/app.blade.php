@@ -15,8 +15,8 @@
         @endisset
         {{ $setting_web->name }}
     </title>
-        @yield('seo')
-        <link rel="shortcut icon" href="{{ Storage::url($setting_web->favicon) }}">
+    @yield('seo')
+    <link rel="shortcut icon" href="{{ Storage::url($setting_web->favicon) }}">
 
 
     <!-- GOOGLE FONTS -->
@@ -42,7 +42,7 @@
 
     <!-- TEMPLATE CSS -->
     <!-- <link href="css/azure-theme.css" rel="stylesheet">     -->
-     <link href="{{ asset('front/css/blue-theme.css') }}" rel="stylesheet">
+    <link href="{{ asset('front/css/blue-theme.css') }}" rel="stylesheet">
     <!-- <link href="css/brown-theme.css" rel="stylesheet">     -->
     <!-- <link href="css/dimgreen-theme.css" rel="stylesheet">  -->
     <!-- <link href="css/olive-theme.css" rel="stylesheet">     -->
@@ -84,7 +84,7 @@
   ============================================= -->
     <div id="page" class="page">
 
-        @if(route('home') == url()->current())
+        @if (route('home') == url()->current())
             @include('front.partials.hero')
         @else
             @include('front.partials.breadcrumb')
@@ -97,10 +97,6 @@
 
 
         @yield('content')
-
-
-
-
 
 
 

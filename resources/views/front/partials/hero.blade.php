@@ -23,7 +23,7 @@
                             {{-- <div class="btns-group mb-25">
                                 <a href="#cta-6" class="btn btn-md btn-theme tra-white-hover mr-15">Start Free
                                     Trial</a>
-                                <a href="https://www.youtube.com/embed/7e90gBu4pas"
+                                <a href="https://www.youtube.com/embed/_wGQ-fTNR0A"
                                     class="video-popup2 btn btn-md btn-video-link ico-30">
                                     <span class="flaticon-play-button-1"></span> Take Quick Tour
                                 </a>
@@ -60,4 +60,3 @@
         </section>
 
 
-        

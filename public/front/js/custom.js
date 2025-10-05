@@ -2,49 +2,49 @@
 
 
 	$(window).on('load', function() {
-	
+
 		"use strict";
 
-						
+
 		/*----------------------------------------------------*/
 		/*	Preloader
 		/*----------------------------------------------------*/
-		
+
 		var preloader = $('#loader-wrapper'),
 			loader = preloader.find('.cssload-loader');
 			loader.fadeOut();
 			preloader.delay(400).fadeOut('slow');
-				
+
 	});
 
 
 	$(window).on('scroll', function() {
-		
+
 		"use strict";
 
-								
+
 		/*----------------------------------------------------*/
 		/*	Navigtion Menu Scroll
-		/*----------------------------------------------------*/	
-		
+		/*----------------------------------------------------*/
+
 		var b = $(window).scrollTop();
-		
-		if( b > 80 ){		
+
+		if( b > 80 ){
 			$(".wsmainfull").addClass("scroll");
 		} else {
 			$(".wsmainfull").removeClass("scroll");
-		}				
+		}
 
 	});
 
 
 	$(document).ready(function() {
-			
+
 		"use strict";
 
 
 		new WOW().init();
-		
+
 
 		/*----------------------------------------------------*/
 		/*	Hero Slider
@@ -70,9 +70,9 @@
 		/*----------------------------------------------------*/
 		/*	Animated Scroll To Anchor
 		/*----------------------------------------------------*/
-		
+
 		$('.header a[href^="#"], .wsmenu a[href^="#"], .page a.btn[href^="#"], .page a.internal-link[href^="#"]').on('click', function (e) {
-			
+
 			e.preventDefault();
 
 			var target = this.hash,
@@ -83,14 +83,14 @@
 			}, 'slow', 'easeInSine', function () {
 				window.location.hash = '1' + target;
 			});
-			
+
 		});
 
 
 		/*----------------------------------------------------*/
 		/*	ScrollUp
 		/*----------------------------------------------------*/
-		
+
 		$.scrollUp = function (options) {
 
 			// Defaults
@@ -115,7 +115,7 @@
 				href: '#top',
 				title: o.scrollText
 			}).appendTo('body');
-			
+
 			// If not using an image display text
 			if (!o.scrollImg) {
 				$(scrollId).text(o.scrollText);
@@ -131,7 +131,7 @@
 			}
 
 			// Scroll function
-			$(window).on('scroll', function(){	
+			$(window).on('scroll', function(){
 				switch (o.animation) {
 					case "fade":
 						$( ($(window).scrollTop() > o.topDistance) ? $(scrollId).fadeIn(o.animationInSpeed) : $(scrollId).fadeOut(o.animationOutSpeed) );
@@ -151,7 +151,7 @@
 			});
 
 		};
-		
+
 		$.scrollUp();
 
 
@@ -160,77 +160,77 @@
 		/*----------------------------------------------------*/
 
 		$(".accordion > .accordion-item.is-active").children(".accordion-panel").slideDown();
-				
+
 		$(".accordion > .accordion-item").click(function() {
 			$(this).siblings(".accordion-item").removeClass("is-active").children(".accordion-panel").slideUp();
 			$(this).toggleClass("is-active").children(".accordion-panel").slideToggle("ease-out");
 		});
 
-		
+
 		/*----------------------------------------------------*/
 		/*	Single Image Lightbox
 		/*----------------------------------------------------*/
-				
+
 		$('.image-link').magnificPopup({
 		  type: 'image'
-		});	
+		});
 
 
 		/*----------------------------------------------------*/
 		/*	Video Link #1 Lightbox
 		/*----------------------------------------------------*/
-		
+
 		$('.video-popup1').magnificPopup({
-		    type: 'iframe',		  	  
+		    type: 'iframe',
 				iframe: {
 					patterns: {
-						youtube: {			   
+						youtube: {
 							index: 'youtube.com',
-							src: 'https://www.youtube.com/embed/SZEflIVnhH8'				
+							src: 'https://www.youtube.com/embed/SZEflIVnhH8'
 								}
 							}
-						}		  		  
+						}
 		});
 
 
 		/*----------------------------------------------------*/
 		/*	Video Link #2 Lightbox
 		/*----------------------------------------------------*/
-		
+
 		$('.video-popup2').magnificPopup({
-		    type: 'iframe',		  	  
+		    type: 'iframe',
 				iframe: {
 					patterns: {
-						youtube: {			   
+						youtube: {
 							index: 'youtube.com',
-							src: 'https://www.youtube.com/embed/7e90gBu4pas'				
+							src: 'https://www.youtube.com/embed/7e90gBu4pas'
 								}
 							}
-						}		  		  
+						}
 		});
 
 
 		/*----------------------------------------------------*/
 		/*	Video Link #3 Lightbox
 		/*----------------------------------------------------*/
-		
+
 		$('.video-popup3').magnificPopup({
-		    type: 'iframe',		  	  
+		    type: 'iframe',
 				iframe: {
 					patterns: {
-						youtube: {			   
+						youtube: {
 							index: 'youtube.com',
-							src: 'https://www.youtube.com/embed/0gv7OC9L2s8'					
+							src: 'https://www.youtube.com/embed/_wGQ-fTNR0A'
 								}
 							}
-						}		  		  
+						}
 		});
 
 
 		/*----------------------------------------------------*/
 		/*	Gallery Carousel Slick
 		/*----------------------------------------------------*/
-		
+
 		$('.gallery-carousel').slick({
 			infinite: true,
 			autoplay: true,
@@ -259,7 +259,7 @@
 			      }
 			    }
 			]
-		});	
+		});
 
 
 		/*----------------------------------------------------*/
@@ -297,14 +297,14 @@
 	              columnWidth: '.masonry-image',
 	            }
 	        });
-	        
+
 	    });
 
 
 		/*----------------------------------------------------*/
 		/*	Statistic Counter
 		/*----------------------------------------------------*/
-	
+
 		$('.count-element').each(function () {
 			$(this).appear(function() {
 				$(this).prop('Counter',0).animate({
@@ -323,7 +323,7 @@
 		/*----------------------------------------------------*/
 		/*	Cards Carousel
 		/*----------------------------------------------------*/
-			
+
 		var owl = $('.cards-carousel');
 			owl.owlCarousel({
 				items: 3,
@@ -359,7 +359,7 @@
 		/*----------------------------------------------------*/
 		/*	Testimonials Rotator
 		/*----------------------------------------------------*/
-	
+
 		var owl = $('.reviews-wrapper');
 			owl.owlCarousel({
 				items: 3,
@@ -392,7 +392,7 @@
 		/*----------------------------------------------------*/
 		/*	Brands Logo Rotator
 		/*----------------------------------------------------*/
-	
+
 		var owl = $('.brands-carousel');
 			owl.owlCarousel({
 				items: 5,
@@ -418,7 +418,7 @@
 					},
 					991:{
 						items:5
-					},				
+					},
 					1000:{
 						items:6
 					}
@@ -429,9 +429,9 @@
 		/*----------------------------------------------------*/
 		/*	Register Form Validation
 		/*----------------------------------------------------*/
-		
+
 		$(".register-form").validate({
-			rules:{ 
+			rules:{
 					name:{
 						required: true,
 						minlength: 2,
@@ -449,15 +449,15 @@
 					messages:{
 							name:{
 								required: "Please enter no less than (1) characters"
-							}, 
+							},
 							email:{
 								required: "We need your email address to contact you",
 								email: "Your email address must be in the format of name@domain.com"
-							}, 
+							},
 							phone:{
 								required: "Please enter only digits",
 								digits: "Please enter a valid number"
-							}, 
+							},
 						}
 		});
 
@@ -465,9 +465,9 @@
 		/*----------------------------------------------------*/
 		/*	Contact Form Validation
 		/*----------------------------------------------------*/
-		
+
 		$(".contact-form").validate({
-			rules:{ 
+			rules:{
 					name:{
 						required: true,
 						minlength: 1,
@@ -476,7 +476,7 @@
 					email:{
 						required: true,
 						email: true,
-					},       		
+					},
 					message:{
 						required: true,
 						minlength: 2,
@@ -485,14 +485,14 @@
 					messages:{
 							name:{
 								required: "Please enter no less than (1) characters"
-							}, 
+							},
 							email:{
 								required: "We need your email address to contact you",
 								email: "Your email address must be in the format of name@domain.com"
-							}, 
+							},
 							message:{
 								required: "Please enter no less than (2) characters"
-							}, 
+							},
 						}
 		});
 
@@ -500,9 +500,9 @@
 		/*----------------------------------------------------*/
 		/*	Comment Form Validation
 		/*----------------------------------------------------*/
-		
+
 		$(".comment-form").validate({
-			rules:{ 
+			rules:{
 					name:{
 						required: true,
 						minlength: 1,
@@ -511,7 +511,7 @@
 					email:{
 						required: true,
 						email: true,
-					},       		
+					},
 					message:{
 						required: true,
 						minlength: 2,
@@ -520,22 +520,22 @@
 					messages:{
 							name:{
 								required: "Please enter no less than (1) characters"
-							}, 
+							},
 							email:{
 								required: "We need your email address to contact you",
 								email: "Your email address must be in the format of name@domain.com"
-							}, 
+							},
 							message:{
 								required: "Please enter no less than (2) characters"
-							}, 
+							},
 						}
-		});	
+		});
 
 
 		/*----------------------------------------------------*/
 		/*	Newsletter Subscribe Form
 		/*----------------------------------------------------*/
-	
+
 		$('.newsletter-form').ajaxChimp({
         language: 'cm',
         url: 'https://dsathemes.us3.list-manage.com/subscribe/post?u=af1a6c0b23340d7b339c085b4&id=344a494a6e'
@@ -550,7 +550,7 @@
 			3: 'The domain portion of the email address is invalid (the portion after the @: )',
 			4: 'The username portion of the email address is invalid (the portion before the @: )',
 			5: 'This email address looks fake or invalid. Please enter a real email address'
-		};	
+		};
 
 
 	});
