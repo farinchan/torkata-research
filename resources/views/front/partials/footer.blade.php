@@ -1,5 +1,6 @@
 @php
     $journals = \App\Models\Journal::all();
+    $setting_web = \App\Models\SettingWebsite::first();
 @endphp
 
 <footer id="footer-2" class="footer division">
@@ -70,7 +71,7 @@
                     <ul class="clearfix">
                         @foreach ($journals as $journal)
                             <li>
-                                <p><a href="{{ route('journal.show', $journal) }}">{{ $journal->title }}</a></p>
+                                <p><a href="{{ route('journal.detail', $journal->url_path) }}">{{ $journal->title }}</a></p>
                             </li>
                         @endforeach
 

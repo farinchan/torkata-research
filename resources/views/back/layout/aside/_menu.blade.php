@@ -182,7 +182,7 @@
                 </div>
             </div>
 
-            <div class= "menu-item">
+            {{-- <div class= "menu-item">
                 <a class="menu-link @if (request()->routeIs('back.finance.verification.index')) active @endif"
                     href="{{ route('back.finance.verification.index') }}">
                     <span class="menu-icon">
@@ -204,7 +204,7 @@
                         </span>
                     @endif
                 </a>
-            </div>
+            </div> --}}
             <div class="menu-item">
                 <a class="menu-link @if (request()->routeIs('back.finance.cashflow.index')) active @endif"
                     href="{{ route('back.finance.cashflow.index') }}">

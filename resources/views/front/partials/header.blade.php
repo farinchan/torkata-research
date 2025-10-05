@@ -37,7 +37,7 @@
                             <ul class="sub-menu">
                                 @foreach ($journals as $journal)
                                     <li aria-haspopup="true"><a
-                                            href="{{ route('journal.detail', $journal->slug) }}">{{ $journal->title }}</a>
+                                            href="{{ route('journal.detail', $journal->url_path) }}">{{ $journal->title }}</a>
                                     </li>
                                 @endforeach
                             </ul>
@@ -202,10 +202,10 @@
                             <a href="#"><span class="flaticon-user"></span>&nbsp;{{ Auth::user()->name }}</a>
                             <ul class="sub-menu">
                                 <li aria-haspopup="true">
-                                    <a href="{{ route('profil.show') }}">Profil Saya</a>
+                                    <a href="#">Profil Saya</a>
                                 </li>
                                 <li aria-haspopup="true">
-                                    <a href="{{ route('dashboard') }}">Dashboard</a>
+                                    <a href="{{ route('back.dashboard') }}">Dashboard</a>
                                 </li>
                                 <li aria-haspopup="true">
                                     <a href="{{ route('logout') }}"
