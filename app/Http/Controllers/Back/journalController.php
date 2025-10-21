@@ -230,8 +230,8 @@ class journalController extends Controller
             'journal_path' => $journal_path,
             'journal' => $journal,
             'issue' => $issue,
-            'editors' => Editor::where('issue_id', $issue_id)->get(),
-            'reviewers' => Reviewer::where('issue_id', $issue_id)->get(),
+            // 'editors' => Editor::where('issue_id', $issue_id)->get(),
+            // 'reviewers' => Reviewer::where('issue_id', $issue_id)->get(),
             // 'submissions' => $issue->submissions->pluck('submission_id'),
         ];
         // return response()->json($data);

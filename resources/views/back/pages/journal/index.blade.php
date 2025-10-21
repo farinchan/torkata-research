@@ -73,12 +73,12 @@
                                 </td>
                                 <td class="text-end pe-0">
                                     <span class="fw-bold">
-                                        {{ $issue->editors->count() }}
+                                        {{ $issue->editors?->count() ?? "-" }}
                                     </span>
                                 </td>
                                 <td class="text-end pe-0">
                                     <span class="fw-bold">
-                                        {{ $issue->reviewers->count() }}
+                                        {{ $issue->reviewers?->count() ?? "-" }}
                                     </span>
                                 </td>
                                 <td class="text-end pe-0">

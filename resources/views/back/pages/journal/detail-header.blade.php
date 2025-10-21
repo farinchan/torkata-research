@@ -33,7 +33,7 @@
                         </div> --}}
                         <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
                             <div class="d-flex align-items-center">
-                                <div class="fs-4 fw-bold" >
+                                <div class="fs-4 fw-bold">
                                     @money($journal->author_fee)
                                 </div>
                             </div>
@@ -51,18 +51,20 @@
                         <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
                             <div class="d-flex align-items-center">
                                 <div class="fs-4 fw-bold" data-kt-countup="true"
-                                    data-kt-countup-value="{{ $issue->editors->count() }}">0</div>
+                                    {{-- data-kt-countup-value="{{ $issue->editors?->count() ?? '-' }}" --}}
+                                    >-</div>
                             </div>
                             <div class="fw-semibold fs-6 text-gray-500">Editor</div>
                         </div>
                         <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
                             <div class="d-flex align-items-center">
                                 <div class="fs-4 fw-bold" data-kt-countup="true"
-                                    data-kt-countup-value="{{ $issue->reviewers->count() }}">0</div>
+                                    {{-- data-kt-countup-value="{{ $issue->reviewers?->count() ?? '-' }}" --}}
+                                    >-</div>
                             </div>
                             <div class="fw-semibold fs-6 text-gray-500">Reviewer</div>
                         </div>
-                        <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
+                        {{-- <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
                             <div class="d-flex align-items-center">
                                 <div class="fs-4 fw-bold" data-kt-countup="true"
                                     data-kt-countup-value="{{ $issue->submissions->flatMap->paymentInvoices->where('is_paid', true)->sum('payment_amount') }}"
@@ -83,7 +85,7 @@
                                 </div>
                             </div>
                             <div class="fw-semibold fs-6 text-gray-500">Dana pembayaran Pending</div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -98,14 +100,14 @@
                 <a class="nav-link text-active-primary py-5 me-6 @if (request()->routeIs('back.journal.article.index', [$journal->url_path, $issue->id])) active @endif"
                     href="{{ route('back.journal.article.index', [$journal->url_path, $issue->id]) }}">Artikel</a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link text-active-primary py-5 me-6 @if (request()->routeIs('back.journal.editor.index', [$journal->url_path, $issue->id])) active @endif"
                     href="{{ route('back.journal.editor.index', [$journal->url_path, $issue->id]) }}">Editor</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-active-primary py-5 me-6 @if (request()->routeIs('back.journal.reviewer.index', [$journal->url_path, $issue->id])) active @endif"
                     href="{{ route('back.journal.reviewer.index', [$journal->url_path, $issue->id]) }}">Reviewer</a>
-            </li>
+            </li> --}}
             <li class="nav-item">
                 <a class="nav-link text-active-primary py-5 me-6 @if (request()->routeIs('back.journal.setting.index', [$journal->url_path, $issue->id])) active @endif"
                     href="{{ route('back.journal.setting.index', [$journal->url_path, $issue->id]) }}">Pengaturan</a>
