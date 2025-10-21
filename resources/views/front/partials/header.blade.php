@@ -183,7 +183,7 @@
 
 
                         <!-- SIMPLE NAVIGATION LINK -->
-                        <li class="nl-simple" aria-haspopup="true"><a href="#faqs-1">Kontak</a></li>
+                        <li class="nl-simple" aria-haspopup="true"><a href="{{ route('contact.index') }}">Kontak</a></li>
 
                         @guest
                         <li aria-haspopup="true">
