@@ -1,9 +1,9 @@
 @extends('front.app')
 @section('seo')
-    <title>{{ $meta['description'] }}</title>
+    <title>{{ $meta['title'] }}</title>
     <meta name="description" content="{{ $meta['description'] }}">
     <meta name="keywords" content="{{ $meta['keywords'] }}">
-    <meta name="author" content="Torkata Research">
+<meta name="author" content="Torkata Research">
 
     <meta property="og:title" content="{{ $meta['title'] }}">
     <meta property="og:description" content="{{ $meta['description'] }}">

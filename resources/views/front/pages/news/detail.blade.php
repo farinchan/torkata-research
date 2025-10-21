@@ -1,9 +1,9 @@
 @extends('front.app')
 @section('seo')
-    <title>{{ $meta['description'] }}</title>
+    <title>{{ $meta['title'] }}</title>
     <meta name="description" content="{{ $meta['description'] }}">
     <meta name="keywords" content="{{ $meta['keywords'] }}">
-    <meta name="author" content="{{ $news->user->name ?? "Torkata Research" }}">
+    <meta name="author" content="{{ $news->user->name ?? 'Torkata Research' }}">
 
     <meta property="og:title" content="{{ $meta['title'] }}">
     <meta property="og:description" content="{{ $meta['description'] }}">
@@ -14,7 +14,7 @@
 @endsection
 @section('content')
     <!-- BLOG POSTS LISTING-1
-                                                   ============================================= -->
+                                                                   ============================================= -->
     <section id="blog-listing-1" class="wide-60 blog-page-section division">
         <div class="container">
             <div class="row">
@@ -233,8 +233,8 @@
                                     <input type="hidden" name="news_id" value="{{ $news->id }}">
                                     <div class="col-md-12 input-message">
                                         <p>Komentar Kamu *</p>
-                                        <textarea class="form-control message" name="comment" rows="6" placeholder="Masukkan Komentar Anda Di Sini* ..."
-                                            required>{{ old('comment') }}</textarea>
+                                        <textarea class="form-control message" name="comment" rows="6"
+                                            placeholder="Masukkan Komentar Anda Di Sini* ..." required>{{ old('comment') }}</textarea>
                                         @error('comment')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -242,8 +242,8 @@
 
                                     <div class="col-md-12">
                                         <p>Nama*</p>
-                                        <input type="text" name="name" class="form-control name" value="{{ old('name') }}"
-                                            placeholder="Enter Your Name*" required>
+                                        <input type="text" name="name" class="form-control name"
+                                            value="{{ old('name') }}" placeholder="Enter Your Name*" required>
                                         @error('name')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -251,9 +251,17 @@
 
                                     <div class="col-md-12">
                                         <p>Email*</p>
-                                        <input type="email" name="email" class="form-control email" value="{{ old('email') }}"
-                                            placeholder="Enter Your Email*" required>
+                                        <input type="email" name="email" class="form-control email"
+                                            value="{{ old('email') }}" placeholder="Enter Your Email*" required>
                                         @error('email')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        {!! NoCaptcha::renderJs() !!}
+                                        {!! NoCaptcha::display() !!}
+                                        @error('g-recaptcha-response')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -355,7 +363,8 @@
 
                         <!-- Text -->
                         <p class="grey-color">
-                                Temukan berita terbaru, artikel menarik, dan informasi terkini seputar riset, teknologi, dan inovasi di Torkata Research. Selalu update wawasan Anda bersama kami!
+                            Temukan berita terbaru, artikel menarik, dan informasi terkini seputar riset, teknologi, dan
+                            inovasi di Torkata Research. Selalu update wawasan Anda bersama kami!
                         </p>
 
                     </div> <!-- End Text Widget -->
@@ -371,7 +380,7 @@
 
 
     <!-- BLOG-1
-                                       ============================================= -->
+                                                       ============================================= -->
     <section id="blog-1" class="bg-lightgrey wide-60 blog-section division">
         <div class="container">
 
@@ -454,7 +463,7 @@
 
 
     <!-- NEWSLETTER-1
-                                                   ============================================= -->
+                                                                   ============================================= -->
     <div id="newsletter-1" class="bg-10 newsletter-section division">
         <div class="container white-color">
 
@@ -507,20 +516,19 @@
 @endsection
 
 @section('scripts')
-<script>
-    $.ajax({
-      url: "{{ route('news.visit') }}",
-      data: {
-          news_id: {{ $news->id }}
-      },
-      type: "GET",
-      success: function(response) {
-          console.log(response);
-      },
-      error: function(error) {
-          console.log(error);
-      }
-  });
-</script>
+    <script>
+        $.ajax({
+            url: "{{ route('news.visit') }}",
+            data: {
+                news_id: {{ $news->id }}
+            },
+            type: "GET",
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    </script>
 @endsection
-

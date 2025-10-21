@@ -8,6 +8,10 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    @php
+        $setting_web = \App\Models\SettingWebsite::first();
+    @endphp
+
     <!-- SITE TITLE -->
     <title>
         @isset($title)

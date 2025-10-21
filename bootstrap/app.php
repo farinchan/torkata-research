@@ -12,7 +12,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        // $middleware->alias('NoCaptcha', Anhskohbo\NoCaptcha\Facades\NoCaptcha::class);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
