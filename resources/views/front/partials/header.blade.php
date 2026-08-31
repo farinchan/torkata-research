@@ -134,6 +134,7 @@
                                             <!-- Image -->
                                             <div class="fluid-width-video-wrapper mb-15"><img
                                                     src="{{ $news_popular->getThumbnail() }}" alt="{{ $news_popular->title ?? 'Berita Populer' }}"
+                                                    loading="lazy" decoding="async"
                                                     style="width: 100%; height: 200px; object-fit: cover;" />
                                             </div>
 
@@ -167,7 +168,7 @@
 
                                                         <!-- Image -->
                                                         <img class="img-fluid" src="{{ $news->getThumbnail() }}"
-                                                            alt="{{ $news->title ?? 'Berita' }}" />
+                                                            alt="{{ $news->title ?? 'Berita' }}" loading="lazy" decoding="async" />
 
                                                         <!-- Text -->
                                                         <div class="post-summary">

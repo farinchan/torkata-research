@@ -70,22 +70,22 @@
 
                     <!-- IMAGE-1 -->
                     <div id="img-4-1" class="col-md-6 col-lg wow fadeInUp" data-wow-delay="0.4s">
-                        <img class="img-fluid radius-06" src="{{ asset('front/images/hero-4-1.jpg') }}" alt="hero-image">
+                        <img class="img-fluid radius-06" src="{{ asset('front/images/hero-4-1.jpg') }}" alt="hero-image" loading="lazy" decoding="async">
                     </div>
 
                     <!-- IMAGE-2 -->
                     <div id="img-4-2" class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.8s">
-                        <img class="img-fluid radius-06" src="{{ asset('front/images/image1.jpeg') }}" alt="hero-image">
+                        <img class="img-fluid radius-06" src="{{ asset('front/images/image1.jpeg') }}" alt="hero-image" loading="lazy" decoding="async">
                     </div>
 
                     <!-- IMAGE-3 -->
                     <div id="img-4-3" class="col-md-6 col-lg wow fadeInUp" data-wow-delay="1.2s">
-                        <img class="img-fluid radius-06" src="{{ asset('front/images/hero-4-3.jpg') }}" alt="hero-image">
+                        <img class="img-fluid radius-06" src="{{ asset('front/images/hero-4-3.jpg') }}" alt="hero-image" loading="lazy" decoding="async">
                     </div>
 
                     <!-- IMAGE-4 -->
                     <div id="img-4-4" class="col-md-6 col-lg wow fadeInUp" data-wow-delay="1.6s">
-                        <img class="img-fluid radius-06" src="{{ asset('front/images/hero-4-4.jpg') }}" alt="hero-image">
+                        <img class="img-fluid radius-06" src="{{ asset('front/images/hero-4-4.jpg') }}" alt="hero-image" loading="lazy" decoding="async">
                     </div>
 
                 </div> <!-- End row -->
@@ -232,7 +232,7 @@
                                         <a href="{{ route('news.detail', $news->slug) }}">
                                             <div class="hover-overlay">
                                                 <img class="img-fluid" src="{{ $news->getThumbnail() }}"
-                                                    alt="blog-post-image" />
+                                                    alt="{{ $news->title }}" loading="lazy" decoding="async" />
                                                 <div class="item-overlay"></div>
                                             </div>
                                         </a>
@@ -314,6 +314,7 @@
                                         <div class="blog-post-img" style="position: relative; overflow: hidden;">
                                             <a href="{{ route('event.show', $event->slug) }}">
                                                 <img class="img-fluid" src="{{ $event->getThumbnail() }}" alt="{{ $event->name }}"
+                                                     loading="lazy" decoding="async"
                                                      style="width: 100%; height: 180px; object-fit: cover;">
                                             </a>
                                             <div class="post-tag txt-upcase" style="position: absolute; top: 10px; left: 10px; background: #fff; padding: 3px 12px; border-radius: 4px; font-size: 11px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
@@ -531,6 +532,7 @@
                                 <div class="blog-post-img" style="position: relative; overflow: hidden;">
                                     <a href="{{ route('book.show', $book->slug) }}">
                                         <img class="img-fluid" src="{{ $book->getThumbnail() }}" alt="{{ $book->title }}"
+                                             loading="lazy" decoding="async"
                                              style="width: 100%; height: 280px; object-fit: cover;">
                                     </a>
                                     <!-- CATEGORY -->
@@ -607,7 +609,7 @@
                                 <!-- Image -->
                                 <div class="fbox-img radius-04">
                                     <a href="{{ route('journal.detail', $journal->url_path) }}">
-                                        <img class="img-fluid" src="{{ $journal->getJournalThumbnail() }}" alt="features-image">
+                                        <img class="img-fluid" src="{{ $journal->getJournalThumbnail() }}" alt="{{ $journal->title }}" loading="lazy" decoding="async">
                                     </a>
                                 </div>
 
@@ -659,6 +661,7 @@
                             <div class="blog-post-img" style="position: relative; overflow: hidden;">
                                 <a href="{{ route('product.show', $product->slug) }}">
                                     <img class="img-fluid" src="{{ $product->getThumbnail() }}" alt="{{ $product->name }}"
+                                         loading="lazy" decoding="async"
                                          style="width: 100%; height: 220px; object-fit: cover;">
                                 </a>
                                 <!-- CATEGORY -->
@@ -760,7 +763,7 @@
                 <!-- IMAGE BLOCK -->
                 <div class="col-md-5 col-lg-6 m-top">
                     <div class="content-6-img right-column wow fadeInRight" data-wow-delay="0.4s">
-                        <img class="img-fluid" src="{{ asset('front/images/tablet-4.png') }}" alt="content-image">
+                        <img class="img-fluid" src="{{ asset('front/images/tablet-4.png') }}" alt="Layanan Riset dan Publikasi Nagari Sastra" loading="lazy" decoding="async">
                     </div>
                 </div>
 
@@ -872,70 +875,70 @@
                         <!-- BRAND LOGO IMAGE -->
                         <div class="brand-logo">
                             <a href="#">
-                                <img class="img-fluid" src="{{ asset('front/images/brand-1.png') }}" alt="brand-logo" />
+                                <img class="img-fluid" src="{{ asset('front/images/brand-1.png') }}" alt="brand-logo" loading="lazy" decoding="async" />
                             </a>
                         </div>
 
                         <!-- BRAND LOGO IMAGE -->
                         <div class="brand-logo">
                             <a href="#">
-                                <img class="img-fluid" src="{{ asset('front/images/brand-2.png') }}" alt="brand-logo" />
+                                <img class="img-fluid" src="{{ asset('front/images/brand-2.png') }}" alt="brand-logo" loading="lazy" decoding="async" />
                             </a>
                         </div>
 
                         <!-- BRAND LOGO IMAGE -->
                         <div class="brand-logo">
                             <a href="#">
-                                <img class="img-fluid" src="{{ asset('front/images/brand-3.png') }}" alt="brand-logo" />
+                                <img class="img-fluid" src="{{ asset('front/images/brand-3.png') }}" alt="brand-logo" loading="lazy" decoding="async" />
                             </a>
                         </div>
 
                         <!-- BRAND LOGO IMAGE -->
                         <div class="brand-logo">
                             <a href="#">
-                                <img class="img-fluid" src="{{ asset('front/images/brand-4.png') }}" alt="brand-logo" />
+                                <img class="img-fluid" src="{{ asset('front/images/brand-4.png') }}" alt="brand-logo" loading="lazy" decoding="async" />
                             </a>
                         </div>
 
                         <!-- BRAND LOGO IMAGE -->
                         <div class="brand-logo">
                             <a href="#">
-                                <img class="img-fluid" src="{{ asset('front/images/brand-5.png') }}" alt="brand-logo" />
+                                <img class="img-fluid" src="{{ asset('front/images/brand-5.png') }}" alt="brand-logo" loading="lazy" decoding="async" />
                             </a>
                         </div>
 
                         <!-- BRAND LOGO IMAGE -->
                         <div class="brand-logo">
                             <a href="#">
-                                <img class="img-fluid" src="{{ asset('front/images/brand-6.png') }}" alt="brand-logo" />
+                                <img class="img-fluid" src="{{ asset('front/images/brand-6.png') }}" alt="brand-logo" loading="lazy" decoding="async" />
                             </a>
                         </div>
 
                         <!-- BRAND LOGO IMAGE -->
                         <div class="brand-logo">
                             <a href="#">
-                                <img class="img-fluid" src="{{ asset('front/images/brand-7.png') }}" alt="brand-logo" />
+                                <img class="img-fluid" src="{{ asset('front/images/brand-7.png') }}" alt="brand-logo" loading="lazy" decoding="async" />
                             </a>
                         </div>
 
                         <!-- BRAND LOGO IMAGE -->
                         <div class="brand-logo">
                             <a href="#">
-                                <img class="img-fluid" src="{{ asset('front/images/brand-8.png') }}" alt="brand-logo" />
+                                <img class="img-fluid" src="{{ asset('front/images/brand-8.png') }}" alt="brand-logo" loading="lazy" decoding="async" />
                             </a>
                         </div>
 
                         <!-- BRAND LOGO IMAGE -->
                         <div class="brand-logo">
                             <a href="#">
-                                <img class="img-fluid" src="{{ asset('front/images/brand-9.png') }}" alt="brand-logo" />
+                                <img class="img-fluid" src="{{ asset('front/images/brand-9.png') }}" alt="brand-logo" loading="lazy" decoding="async" />
                             </a>
                         </div>
 
                         <!-- BRAND LOGO IMAGE -->
                         <div class="brand-logo">
                             <a href="#">
-                                <img class="img-fluid" src="images/brand-10.png" alt="brand-logo" />
+                                <img class="img-fluid" src="{{ asset('front/images/brand-10.png') }}" alt="brand-logo" loading="lazy" decoding="async" />
                             </a>
                         </div>
 
