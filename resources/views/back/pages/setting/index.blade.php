@@ -55,7 +55,7 @@
                                     <div class="image-input image-input-outline" data-kt-image-input="true"
                                         style="background-image: url('{{ asset('back/media/svg/avatars/blank.svg') }}')">
                                         <div class="image-input-wrapper w-125px h-125px "
-                                            style="background-image: url('{{ Storage::url($setting->logo ?? '') }}')">
+                                            style="background-image: url('{{ $setting->logo ?? '' }}')">
                                         </div>
                                         <label
                                             class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
@@ -104,7 +104,7 @@
                                     <div class="image-input image-input-outline" data-kt-image-input="true"
                                         style="background-image: url('{{ asset('back/media/svg/avatars/blank.svg') }}')">
                                         <div class="image-input-wrapper w-125px h-125px "
-                                            style="background-image: url('{{ Storage::url($setting->favicon ?? '') }}')">
+                                            style="background-image: url('{{ $setting->favicon}}')">
                                         </div>
                                         <label
                                             class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"

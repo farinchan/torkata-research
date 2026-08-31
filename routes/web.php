@@ -51,6 +51,81 @@ use App\Http\Controllers\Back\ProductOrderController as BackProductOrderControll
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/visit', [HomeController::class, 'vistWebsite'])->name('visit.ajax');
 
+// PWA Offline Fallback Page
+Route::get('/offline', function () {
+    $setting_web = \App\Models\SettingWebsite::first();
+    return view('front.pages.offline', [
+        'title' => 'Offline | ' . ($setting_web->name ?? 'Nagari Sastra'),
+        'setting_web' => $setting_web,
+    ]);
+})->name('pwa.offline');
+
+// PWA Dynamic Web App Manifest
+Route::get('/manifest.json', function () {
+    $setting = \App\Models\SettingWebsite::first();
+    $name = $setting->name ?? 'Nagari Sastra - Publication, research, and Education';
+    $shortName = 'Nagari Sastra';
+    $description = !empty($setting->about) ? strip_tags($setting->about) : 'Lembaga Riset, Publikasi Jurnal Ilmiah Terakreditasi, Penerbitan Buku Ber-ISBN, dan Pendidikan';
+
+    $manifest = [
+        'name' => $name,
+        'short_name' => $shortName,
+        'description' => $description,
+        'start_url' => '/',
+        'scope' => '/',
+        'display' => 'standalone',
+        'background_color' => '#ffffff',
+        'theme_color' => '#0284c7',
+        'orientation' => 'portrait-primary',
+        'categories' => ['education', 'books', 'research', 'productivity'],
+        'icons' => [
+            ['src' => '/pwa-icons/icon-72x72.png', 'sizes' => '72x72', 'type' => 'image/png', 'purpose' => 'any'],
+            ['src' => '/pwa-icons/icon-96x96.png', 'sizes' => '96x96', 'type' => 'image/png', 'purpose' => 'any'],
+            ['src' => '/pwa-icons/icon-128x128.png', 'sizes' => '128x128', 'type' => 'image/png', 'purpose' => 'any'],
+            ['src' => '/pwa-icons/icon-144x144.png', 'sizes' => '144x144', 'type' => 'image/png', 'purpose' => 'any'],
+            ['src' => '/pwa-icons/icon-152x152.png', 'sizes' => '152x152', 'type' => 'image/png', 'purpose' => 'any'],
+            ['src' => '/pwa-icons/icon-192x192.png', 'sizes' => '192x192', 'type' => 'image/png', 'purpose' => 'any'],
+            ['src' => '/pwa-icons/icon-384x384.png', 'sizes' => '384x384', 'type' => 'image/png', 'purpose' => 'any'],
+            ['src' => '/pwa-icons/icon-512x512.png', 'sizes' => '512x512', 'type' => 'image/png', 'purpose' => 'any'],
+            ['src' => '/pwa-icons/maskable-icon-512x512.png', 'sizes' => '512x512', 'type' => 'image/png', 'purpose' => 'maskable'],
+        ],
+        'shortcuts' => [
+            [
+                'name' => 'Jurnal Ilmiah',
+                'short_name' => 'Jurnal',
+                'description' => 'Akses direktori jurnal ilmiah terakreditasi',
+                'url' => '/journal',
+                'icons' => [['src' => '/pwa-icons/icon-96x96.png', 'sizes' => '96x96']],
+            ],
+            [
+                'name' => 'Katalog Buku',
+                'short_name' => 'Buku',
+                'description' => 'Jelajahi buku terbitan ber-ISBN',
+                'url' => '/book',
+                'icons' => [['src' => '/pwa-icons/icon-96x96.png', 'sizes' => '96x96']],
+            ],
+            [
+                'name' => 'Berita & Riset',
+                'short_name' => 'Berita',
+                'description' => 'Kabar penelitian dan publikasi terbaru',
+                'url' => '/news',
+                'icons' => [['src' => '/pwa-icons/icon-96x96.png', 'sizes' => '96x96']],
+            ],
+            [
+                'name' => 'Hubungi Kami',
+                'short_name' => 'Kontak',
+                'description' => 'Konsultasi publikasi dan layanan riset',
+                'url' => '/contact',
+                'icons' => [['src' => '/pwa-icons/icon-96x96.png', 'sizes' => '96x96']],
+            ],
+        ],
+    ];
+
+    return response()->json($manifest, 200, [
+        'Content-Type' => 'application/manifest+json; charset=utf-8',
+    ]);
+})->name('pwa.manifest');
+
 // OAI-PMH 2.0 Endpoint (Academic Harvesting: Google Scholar, BASE, WorldCat, OAPEN)
 Route::get('/oai', [OaiPmhController::class, 'handle'])->name('oai-pmh');
 

@@ -26,6 +26,20 @@
     <link rel="shortcut icon" href="{{ $setting_web->favicon }}">
     <link rel="alternate" type="application/xml" title="OAI-PMH" href="{{ route('oai-pmh', ['verb' => 'Identify']) }}">
 
+    <!-- PWA / WEB APP MANIFEST & META TAGS -->
+    <link rel="manifest" href="{{ asset('manifest.json') }}">
+    <meta name="theme-color" content="#0284c7">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="{{ $setting_web->name ?? config('app.name', 'Nagari Sastra') }}">
+    <link rel="apple-touch-icon" href="{{ asset('pwa-icons/icon-192x192.png') }}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('pwa-icons/icon-152x152.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('pwa-icons/icon-192x192.png') }}">
+    <link rel="apple-touch-icon" sizes="167x167" href="{{ asset('pwa-icons/icon-152x152.png') }}">
+    <meta name="msapplication-TileImage" content="{{ asset('pwa-icons/icon-144x144.png') }}">
+    <meta name="msapplication-TileColor" content="#0284c7">
+
 
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -174,6 +188,21 @@
     --}}
 
 
+
+    <!-- PWA SERVICE WORKER REGISTRATION -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('[PWA] ServiceWorker registered with scope: ', registration.scope);
+                    })
+                    .catch(function(err) {
+                        console.warn('[PWA] ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
 
 </body>
 
