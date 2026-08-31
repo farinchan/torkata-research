@@ -30,11 +30,11 @@ class NewsController extends Controller
             ->paginate(6);
         $news->appends(['q' => $search]);
         $data = [
-            'title' => 'Berita | ' . $setting_web->name,
+            'title' => 'Berita & Artikel Ilmiah | ' . $setting_web->name,
             'meta' => [
-                'title' => 'Berita | ' . $setting_web->name,
-                'description' => Str::limit('Berita terbaru dari ' . strip_tags($setting_web->about), 155),
-                'keywords' => $setting_web->name . ', berita, informasi, artikel, kabar terbaru',
+                'title' => 'Berita & Artikel Ilmiah | ' . $setting_web->name,
+                'description' => Str::limit('Kumpulan berita, artikel ilmiah, dan kabar penelitian terbaru dari ' . $setting_web->name, 155),
+                'keywords' => $setting_web->name . ', berita penelitian, artikel ilmiah, kabar akademik, informasi publikasi, update riset, inovasi, padang, sumatera barat',
                 'favicon' => $setting_web->favicon,
                 'og_image' => $setting_web->getLogo(),
                 'og_type' => 'website',
@@ -64,11 +64,11 @@ class NewsController extends Controller
         $setting_web = SettingWebsite::first();
         $news = News::where('slug', $slug)->where('status', 'published')->firstOrFail();
         $data = [
-            'title' => $news->title,
+            'title' => $news->title . ' | ' . $setting_web->name,
             'meta' => [
-                'title' => $news->title,
+                'title' => $news->title . ' | ' . $setting_web->name,
                 'description' => Str::limit(strip_tags($news->content), 155),
-                'keywords' => $setting_web->name . ', ' . $news->title . ', ' . ($news->category->name ?? 'berita') . ', artikel',
+                'keywords' => $news->title . ', berita ' . ($news->category->name ?? 'ilmiah') . ', artikel penelitian, ' . ($news->user?->name ?? 'penulis') . ', publikasi, riset, ' . $setting_web->name,
                 'favicon' => $news->thumbnail ?? $setting_web->favicon,
                 'author' => $news->user?->name ?? $setting_web->name,
                 'og_image' => $news->getThumbnail(),
@@ -86,7 +86,7 @@ class NewsController extends Controller
                     'link' => route('news.index')
                 ],
                 [
-                    'name' => $news->id,
+                    'name' => Str::limit($news->title, 35),
                     'link' => route('news.detail', $news->slug)
                 ]
             ],
@@ -105,11 +105,11 @@ class NewsController extends Controller
         $category = NewsCategory::where('slug', $slug)->firstOrFail();
         $news = $category->news()->where('status', 'published')->latest()->paginate(6);
         $data = [
-            'title' => $category->name . ' | ' . $setting_web->name,
+            'title' => 'Berita ' . $category->name . ' | ' . $setting_web->name,
             'meta' => [
-                'title' => $category->name . ' | ' . $setting_web->name,
-                'description' => Str::limit('Berita kategori ' . $category->name . ' - ' . strip_tags($setting_web->about), 155),
-                'keywords' => $setting_web->name . ', ' . $category->name . ', berita, kategori, artikel',
+                'title' => 'Berita ' . $category->name . ' | ' . $setting_web->name,
+                'description' => Str::limit('Kumpulan artikel dan berita kategori ' . $category->name . ' - ' . $setting_web->name, 155),
+                'keywords' => 'berita ' . $category->name . ', artikel ' . $category->name . ', topik ' . $category->name . ', riset ' . $category->name . ', ' . $setting_web->name,
                 'favicon' => $setting_web->favicon,
                 'og_image' => $setting_web->getLogo(),
                 'og_type' => 'website',

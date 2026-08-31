@@ -65,7 +65,7 @@
 
 
             <!-- HERO IMAGES -->
-            <div class="hero-4-images">
+            {{-- <div class="hero-4-images">
                 <div class="row">
 
                     <!-- IMAGE-1 -->
@@ -89,7 +89,8 @@
                     </div>
 
                 </div> <!-- End row -->
-            </div> <!-- END HERO IMAGES -->
+            </div>  --}}
+            <!-- END HERO IMAGES -->
 
 
         </div> <!-- End container -->

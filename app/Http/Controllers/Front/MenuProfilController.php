@@ -16,12 +16,15 @@ class MenuProfilController extends Controller
     {
         $setting_web = SettingWebsite::first();
         $menu_profil = MenuProfil::where('slug', $slug)->first();
+        if (!$menu_profil) {
+            abort(404);
+        }
         $data = [
-            'title' => $menu_profil->name,
+            'title' => $menu_profil->name . ' | ' . $setting_web->name,
             'meta' => [
                 'title' => $menu_profil->name . ' | ' . $setting_web->name,
                 'description' => Str::limit(strip_tags($menu_profil->content), 155),
-                'keywords' => $setting_web->name . ', ' . $menu_profil->name . ', profil, informasi',
+                'keywords' => $menu_profil->name . ', profil lembaga, tentang kami, visi misi, ' . $setting_web->name . ', padang, sumatera barat',
                 'favicon' => $menu_profil->image ?? $setting_web->favicon,
                 'og_image' => $menu_profil->image ?? ($setting_web->logo ?? $setting_web->favicon),
                 'og_type' => 'article',
@@ -34,7 +37,7 @@ class MenuProfilController extends Controller
                     'link' => route('home')
                 ],
                 [
-                    'name' => 'Detail',
+                    'name' => $menu_profil->name,
                     'link' => route('profil.show', $menu_profil->slug)
                 ]
             ],

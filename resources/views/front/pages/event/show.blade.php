@@ -1,5 +1,40 @@
 @extends('front.app')
 
+@section('seo')
+@php
+    $eventSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'Event',
+        'name' => $event->name,
+        'description' => Str::limit(strip_tags($event->description), 160),
+        'image' => [
+            $event->getThumbnail() ? (Str::startsWith($event->getThumbnail(), ['http://', 'https://']) ? $event->getThumbnail() : url($event->getThumbnail())) : '',
+        ],
+        'eventStatus' => 'https://schema.org/EventScheduled',
+        'eventAttendanceMode' => $event->location ? 'https://schema.org/OfflineEventAttendanceMode' : 'https://schema.org/OnlineEventAttendanceMode',
+        'location' => [
+            '@type' => 'Place',
+            'name' => $event->location ?: 'Online',
+            'address' => [
+                '@type' => 'PostalAddress',
+                'addressLocality' => 'Padang',
+                'addressCountry' => 'ID',
+            ],
+        ],
+        'organizer' => [
+            '@type' => 'Organization',
+            'name' => $setting_web->name ?? config('app.name'),
+        ],
+    ];
+    if ($event->datetime) {
+        $eventSchema['startDate'] = date('Y-m-d\TH:i:s', strtotime($event->datetime));
+    }
+@endphp
+<script type="application/ld+json">
+{!! json_encode($eventSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+</script>
+@endsection
+
 @section('content')
 
     <!-- EVENT DETAIL

@@ -62,6 +62,9 @@ Route::get('/sitemap.xml', function () {
     $events = \App\Models\Event::where('is_active', true)->where('access', 'terbuka')->latest()->get();
     $announcements = \App\Models\Announcement::where('is_active', true)->latest()->get();
     $menuProfils = \App\Models\MenuProfil::all();
+    $products = \App\Models\Product::where('is_active', true)->latest()->get();
+    $newsCategories = \App\Models\NewsCategory::all();
+    $bookCategories = \App\Models\BookCategory::all();
 
     $urls = [];
 
@@ -70,12 +73,27 @@ Route::get('/sitemap.xml', function () {
     $urls[] = ['loc' => route('news.index'), 'changefreq' => 'daily', 'priority' => '0.8'];
     $urls[] = ['loc' => route('journal.index'), 'changefreq' => 'weekly', 'priority' => '0.8'];
     $urls[] = ['loc' => route('book.index'), 'changefreq' => 'weekly', 'priority' => '0.8'];
+    $urls[] = ['loc' => route('product.index'), 'changefreq' => 'weekly', 'priority' => '0.8'];
     $urls[] = ['loc' => route('event.index'), 'changefreq' => 'weekly', 'priority' => '0.8'];
     $urls[] = ['loc' => route('announcement.index'), 'changefreq' => 'weekly', 'priority' => '0.7'];
     $urls[] = ['loc' => route('contact.index'), 'changefreq' => 'monthly', 'priority' => '0.6'];
     $urls[] = ['loc' => route('page.faq'), 'changefreq' => 'monthly', 'priority' => '0.5'];
     $urls[] = ['loc' => route('page.terms'), 'changefreq' => 'yearly', 'priority' => '0.3'];
     $urls[] = ['loc' => route('page.privacy'), 'changefreq' => 'yearly', 'priority' => '0.3'];
+
+    // Team pages per journal
+    foreach ($journals as $journal) {
+        $urls[] = ['loc' => route('team.editor', ['journal' => $journal->url_path]), 'changefreq' => 'monthly', 'priority' => '0.6'];
+        $urls[] = ['loc' => route('team.reviewer', ['journal' => $journal->url_path]), 'changefreq' => 'monthly', 'priority' => '0.6'];
+    }
+
+    // Categories
+    foreach ($newsCategories as $cat) {
+        $urls[] = ['loc' => route('news.category', $cat->slug), 'changefreq' => 'weekly', 'priority' => '0.6'];
+    }
+    foreach ($bookCategories as $cat) {
+        $urls[] = ['loc' => route('book.category', $cat->slug), 'changefreq' => 'weekly', 'priority' => '0.6'];
+    }
 
     // Dynamic content
     foreach ($news as $item) {
@@ -86,6 +104,9 @@ Route::get('/sitemap.xml', function () {
     }
     foreach ($books as $book) {
         $urls[] = ['loc' => route('book.show', $book->slug), 'lastmod' => $book->updated_at->toW3cString(), 'changefreq' => 'monthly', 'priority' => '0.7'];
+    }
+    foreach ($products as $product) {
+        $urls[] = ['loc' => route('product.show', $product->slug), 'lastmod' => $product->updated_at->toW3cString(), 'changefreq' => 'weekly', 'priority' => '0.7'];
     }
     foreach ($events as $event) {
         $urls[] = ['loc' => route('event.show', $event->slug), 'lastmod' => $event->updated_at->toW3cString(), 'changefreq' => 'weekly', 'priority' => '0.7'];

@@ -43,10 +43,19 @@
                             <p><a href="{{ route('book.index') }}">Buku</a></p>
                         </li>
                         <li>
-                            <p><a href="{{ route('news.index') }}">Berita</a></p>
+                            <p><a href="{{ route('product.index') }}">Produk Digital</a></p>
+                        </li>
+                        <li>
+                            <p><a href="{{ route('news.index') }}">Berita & Artikel</a></p>
+                        </li>
+                        <li>
+                            <p><a href="{{ route('event.index') }}">Event</a></p>
                         </li>
                         <li>
                             <p><a href="{{ route('contact.index') }}">Kontak</a></p>
+                        </li>
+                        <li>
+                            <p><a href="{{ route('page.faq') }}">FAQ</a></p>
                         </li>
                         <li>
                             <p><a href="{{ route('page.terms') }}">Syarat & Ketentuan</a></p>

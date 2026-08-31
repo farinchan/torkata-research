@@ -20,9 +20,7 @@
             {{ $setting_web->name ?? config('app.name') }}
         @endisset
     </title>
-    @isset($meta)
-        @include('front.partials.seo')
-    @endisset
+    @include('front.partials.seo')
     @include('front.partials.breadcrumb_jsonld')
     @yield('seo')
     <link rel="shortcut icon" href="{{ $setting_web->favicon }}">

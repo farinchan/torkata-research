@@ -18,15 +18,15 @@ class ContactController extends Controller
             'title' => 'Hubungi Kami | ' . $setting_web->name,
             'meta' => [
                 'title' => 'Hubungi Kami | ' . $setting_web->name,
-                'description' => 'Hubungi Nagari Sastra Group untuk informasi lebih lanjut mengenai layanan publikasi, jurnal, dan penerbitan buku.',
-                'keywords' => 'kontak, hubungi kami, ' . $setting_web->name,
+                'description' => 'Hubungi ' . $setting_web->name . ' untuk konsultasi dan informasi layanan publikasi jurnal ilmiah terakreditasi, penerbitan buku, dan agenda penelitian.',
+                'keywords' => 'kontak ' . $setting_web->name . ', alamat kantor padang, konsultasi publikasi ilmiah, penerbitan buku ber-isbn, layanan riset, customer service, whatsapp center',
                 'favicon' => $setting_web->favicon,
                 'og_image' => $setting_web->logo ?? $setting_web->favicon,
                 'og_type' => 'website',
                 'robots' => 'index, follow',
                 'canonical' => route('contact.index'),
             ],
-            'breadcrumbs' =>  [
+            'breadcrumbs' => [
                 [
                     'name' => 'Beranda',
                     'link' => route('home')
@@ -35,7 +35,7 @@ class ContactController extends Controller
                     'name' => 'Hubungi Kami',
                     'link' => route('contact.index')
                 ]
-                ],
+            ],
             'setting_web' => SettingWebsite::first()
         ];
         return view('front.pages.home.contact', $data);

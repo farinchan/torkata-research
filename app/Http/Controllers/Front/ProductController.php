@@ -63,11 +63,11 @@ class ProductController extends Controller
         ]);
 
         $data = [
-            'title' => 'Produk Digital | ' . $setting_web->name,
+            'title' => 'Produk Digital & Template | ' . $setting_web->name,
             'meta' => [
-                'title' => 'Produk Digital | ' . $setting_web->name,
-                'description' => Str::limit('Katalog produk digital dari ' . strip_tags($setting_web->about), 155),
-                'keywords' => $setting_web->name . ', produk digital, template, source code, aplikasi, tools',
+                'title' => 'Produk Digital & Template | ' . $setting_web->name,
+                'description' => Str::limit('Katalog template website, source code, dan produk digital premium dari ' . $setting_web->name, 155),
+                'keywords' => 'produk digital, template website, source code aplikasi, tools riset, template jurnal ojs, ' . $setting_web->name . ', padang',
                 'favicon' => $setting_web->favicon,
                 'og_image' => $setting_web->logo ?? $setting_web->favicon,
                 'og_type' => 'website',
@@ -133,12 +133,14 @@ class ProductController extends Controller
                 ->exists();
         }
 
+        $tagsStr = collect($product->tags ?? [])->map(fn($t) => is_array($t) ? ($t['value'] ?? '') : $t)->filter()->implode(', ');
+
         $data = [
             'title' => $product->name . ' | ' . $setting_web->name,
             'meta' => [
                 'title' => $product->name . ' | ' . $setting_web->name,
                 'description' => Str::limit(strip_tags($product->short_description ?? $product->description), 155),
-                'keywords' => $setting_web->name . ', ' . $product->name . ', ' . ($product->category->name ?? 'produk digital') . ', produk digital, download',
+                'keywords' => $product->name . ', beli ' . $product->name . ', ' . ($tagsStr ?: 'template, source code') . ', ' . ($product->category->name ?? 'produk digital') . ', ' . $setting_web->name,
                 'favicon' => $setting_web->favicon,
                 'og_image' => $product->getThumbnail(),
                 'og_type' => 'product',

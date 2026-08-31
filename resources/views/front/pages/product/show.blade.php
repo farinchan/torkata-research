@@ -1,12 +1,32 @@
 @extends('front.app')
 @section('seo')
-    <meta name="description" content="{{ $product->short_description ?? Str::limit(strip_tags($product->description), 160) }}">
-    <meta name="keywords" content="{{ collect($product->tags ?? [])->map(fn($t) => is_array($t) ? ($t['value'] ?? '') : $t)->filter()->implode(', ') }}">
-    <meta property="og:title" content="{{ $product->name }}">
-    <meta property="og:description" content="{{ $product->short_description ?? '' }}">
-    <meta property="og:image" content="{{ $product->getThumbnail() }}">
-    <meta property="og:type" content="product">
-    <meta property="og:url" content="{{ route('product.show', $product->slug) }}">
+@php
+    $productSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'Product',
+        'name' => $product->name,
+        'image' => [
+            $product->getThumbnail() ? (Str::startsWith($product->getThumbnail(), ['http://', 'https://']) ? $product->getThumbnail() : url($product->getThumbnail())) : '',
+        ],
+        'description' => $product->short_description ?? Str::limit(strip_tags($product->description), 160),
+        'sku' => 'PRD-' . $product->id,
+        'offers' => [
+            '@type' => 'Offer',
+            'url' => route('product.show', $product->slug),
+            'priceCurrency' => 'IDR',
+            'price' => (string) ($product->price ?? 0),
+            'priceValidUntil' => date('Y-12-31', strtotime('+1 year')),
+            'availability' => 'https://schema.org/InStock',
+            'seller' => [
+                '@type' => 'Organization',
+                'name' => $setting_web->name ?? config('app.name'),
+            ],
+        ],
+    ];
+@endphp
+<script type="application/ld+json">
+{!! json_encode($productSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+</script>
 @endsection
 
 @section('content')

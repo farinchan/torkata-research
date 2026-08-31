@@ -1,5 +1,34 @@
 @extends('front.app')
 
+@section('seo')
+@php
+    $newsSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'NewsArticle',
+        'headline' => $news->title,
+        'image' => [
+            $news->getThumbnail() ? (Str::startsWith($news->getThumbnail(), ['http://', 'https://']) ? $news->getThumbnail() : url($news->getThumbnail())) : '',
+        ],
+        'datePublished' => $news->created_at->toIso8601String(),
+        'dateModified' => $news->updated_at->toIso8601String(),
+        'author' => [
+            [
+                '@type' => 'Person',
+                'name' => $news->user->name ?? 'Admin',
+            ]
+        ],
+        'publisher' => [
+            '@type' => 'Organization',
+            'name' => $setting_web->name ?? config('app.name'),
+        ],
+        'description' => Str::limit(strip_tags($news->content), 160),
+    ];
+@endphp
+<script type="application/ld+json">
+{!! json_encode($newsSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+</script>
+@endsection
+
 @section('content')
     <!-- BLOG POSTS LISTING-1
                                                                    ============================================= -->

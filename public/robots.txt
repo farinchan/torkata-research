@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Allow: /storage/
 
 # Disallow admin and private paths
 Disallow: /back/
@@ -9,4 +10,6 @@ Disallow: /register
 Disallow: /forgot-password
 Disallow: /reset-password
 Disallow: /api/
-Disallow: /storage/
+Disallow: /payment/
+
+Sitemap: /sitemap.xml

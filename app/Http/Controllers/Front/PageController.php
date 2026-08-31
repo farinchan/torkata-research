@@ -13,11 +13,11 @@ class PageController extends Controller
         $setting_web = SettingWebsite::first();
 
         $data = [
-            'title' => 'Syarat & Ketentuan | ' . $setting_web->name,
+            'title' => 'Syarat & Ketentuan Layanan | ' . $setting_web->name,
             'meta' => [
-                'title' => 'Syarat & Ketentuan | ' . $setting_web->name,
-                'description' => 'Syarat dan ketentuan penggunaan layanan ' . $setting_web->name,
-                'keywords' => $setting_web->name . ', Syarat, Ketentuan, Terms, Conditions, Penggunaan, Layanan, kota padang, sumatera barat',
+                'title' => 'Syarat & Ketentuan Layanan | ' . $setting_web->name,
+                'description' => 'Syarat dan ketentuan penggunaan layanan publikasi, penerbitan buku, dan etika karya ilmiah di ' . $setting_web->name,
+                'keywords' => 'syarat dan ketentuan, terms of service, aturan publikasi, hak cipta karya, etika publikasi ilmiah, ' . $setting_web->name . ', padang',
                 'favicon' => $setting_web->favicon,
                 'og_image' => $setting_web->logo ?? $setting_web->favicon,
                 'og_type' => 'website',
@@ -39,11 +39,11 @@ class PageController extends Controller
         $setting_web = SettingWebsite::first();
 
         $data = [
-            'title' => 'Kebijakan Privasi | ' . $setting_web->name,
+            'title' => 'Kebijakan Privasi & Perlindungan Data | ' . $setting_web->name,
             'meta' => [
-                'title' => 'Kebijakan Privasi | ' . $setting_web->name,
-                'description' => 'Kebijakan privasi dan perlindungan data pengguna ' . $setting_web->name,
-                'keywords' => $setting_web->name . ', Kebijakan, Privasi, Privacy, Policy, kota padang, sumatera barat',
+                'title' => 'Kebijakan Privasi & Perlindungan Data | ' . $setting_web->name,
+                'description' => 'Kebijakan privasi dan perlindungan data pengguna, penulis, dan peneliti di ' . $setting_web->name,
+                'keywords' => 'kebijakan privasi, privacy policy, perlindungan data penulis, privasi pengguna, keamanan akun, ' . $setting_web->name . ', padang',
                 'favicon' => $setting_web->favicon,
                 'og_image' => $setting_web->logo ?? $setting_web->favicon,
                 'og_type' => 'website',
@@ -65,11 +65,11 @@ class PageController extends Controller
         $setting_web = SettingWebsite::first();
 
         $data = [
-            'title' => 'FAQ',
+            'title' => 'FAQ - Pertanyaan Yang Sering Diajukan | ' . $setting_web->name,
             'meta' => [
-                'title' => 'FAQ | ' . $setting_web->name,
-                'description' => 'Pertanyaan yang sering diajukan seputar layanan ' . $setting_web->name,
-                'keywords' => $setting_web->name . ', FAQ, Pertanyaan, Bantuan, Help, kota padang, sumatera barat',
+                'title' => 'FAQ - Pertanyaan Yang Sering Diajukan | ' . $setting_web->name,
+                'description' => 'Pertanyaan yang sering diajukan seputar alur submit jurnal ilmiah, penerbitan buku ber-ISBN, dan layanan publikasi di ' . $setting_web->name,
+                'keywords' => 'faq ' . $setting_web->name . ', tanya jawab publikasi, cara submit jurnal, cara terbitkan buku, biaya publikasi, bantuan pelanggan',
                 'favicon' => $setting_web->favicon,
                 'og_image' => $setting_web->logo ?? $setting_web->favicon,
                 'og_type' => 'website',

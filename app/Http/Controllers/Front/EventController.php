@@ -22,11 +22,11 @@ class EventController extends Controller
         $setting_web = SettingWebsite::first();
 
         $data = [
-            'title' => 'Agenda | ' . $setting_web->name,
+            'title' => 'Agenda & Event Ilmiah | ' . $setting_web->name,
             'meta' => [
-                'title' => 'Agenda | ' . $setting_web->name,
-                'description' => Str::limit(strip_tags($setting_web->about), 155),
-                'keywords' => 'event, seminar, workshop, webinar, ' . $setting_web->name,
+                'title' => 'Agenda & Event Ilmiah | ' . $setting_web->name,
+                'description' => Str::limit('Jadwal seminar ilmiah, workshop penulisan jurnal, webinar penelitian dan pelatihan akademik dari ' . $setting_web->name, 155),
+                'keywords' => 'agenda seminar, workshop penulisan ilmiah, webinar riset, konferensi nasional, pelatihan publikasi, event akademik, ' . $setting_web->name . ', padang, sumatera barat',
                 'favicon' => $setting_web->favicon,
                 'og_image' => $setting_web->logo ?? $setting_web->favicon,
                 'og_type' => 'website',
@@ -55,12 +55,15 @@ class EventController extends Controller
     {
         $setting_web = SettingWebsite::first();
         $event = Event::where('slug', $slug)->first();
+        if (!$event) {
+            abort(404);
+        }
         $data = [
             'title' => $event->name . ' | ' . $setting_web->name,
             'meta' => [
                 'title' => $event->name . ' | ' . $setting_web->name,
                 'description' => Str::limit(strip_tags($event->description), 155),
-                'keywords' => $setting_web->name . ', ' . $event->name . ', event, seminar, workshop',
+                'keywords' => $event->name . ', ' . ($event->type ?? 'event') . ', seminar, workshop, webinar, ' . ($event->location ?: 'Online') . ', registrasi event, ' . $setting_web->name,
                 'favicon' => $event->thumbnail ?? $setting_web->favicon,
                 'og_image' => $event->getThumbnail(),
                 'og_type' => 'event',
@@ -77,7 +80,7 @@ class EventController extends Controller
                     'link' => route('event.index')
                 ],
                 [
-                    'name' => 'Detail',
+                    'name' => Str::limit($event->name, 35),
                     'link' => route('event.show', $event->slug)
                 ]
             ],

@@ -68,39 +68,39 @@ class TeamController extends Controller
             }
         }
 
+        $journalName = $finalOutput['journal'] ?? ($setting_web->name ?? 'Jurnal');
+
         $data = [
-            'title' =>  'Editor | ' . $setting_web->name,
+            'title' => 'Dewan Editorial - ' . $journalName . ' | ' . $setting_web->name,
             'meta' => [
-                'title' => 'Editor | ' . $setting_web->name,
-                'description' => Str::limit(strip_tags($setting_web->about), 155),
-                'keywords' => 'tim editor, editorial board, ' . $setting_web->name,
+                'title' => 'Dewan Editorial - ' . $journalName . ' | ' . $setting_web->name,
+                'description' => Str::limit('Daftar tim dewan editor jurnal ilmiah ' . $journalName . ' yang bertanggung jawab atas penelaahan naskah', 155),
+                'keywords' => 'dewan editorial ' . $journalName . ', tim editor jurnal, editor in chief, dewan penyunting, penelaah, publikasi ilmiah, ' . $setting_web->name,
                 'favicon' => $setting_web->favicon,
                 'og_image' => $setting_web->logo ?? $setting_web->favicon,
                 'og_type' => 'website',
                 'robots' => 'index, follow',
-                'canonical' => route('team.editor'),
+                'canonical' => route('team.editor', ['journal' => $path]),
             ],
-            'breadcrumbs' =>  [
+            'breadcrumbs' => [
                 [
                     'name' => 'Beranda',
                     'link' => route('home')
                 ],
                 [
-                    'name' => 'Editor',
-                    'link' => route('team.editor')
+                    'name' => 'Jurnal',
+                    'link' => route('journal.index')
+                ],
+                [
+                    'name' => 'Dewan Editorial',
+                    'link' => route('team.editor', ['journal' => $path])
                 ]
             ],
             'setting_web' => SettingWebsite::first(),
             'journals' => Journal::all(),
-            'editors' => $targetEditors
-            // 'issues' => Issue::whereHas('journal', function ($query) use ($path) {
-            //     $query->where('url_path', $path);
-            // })->with(['editors' => function ($query) {
-            //     $query->orderBy('name', 'asc');
-            // }])->get(),
+            'editors' => $targetEditors,
         ];
 
-        // return response()->json($data);
         return view('front.pages.team.editor', $data);
     }
 
@@ -185,6 +185,7 @@ class TeamController extends Controller
         }
 
         $targetReviewers = [];
+        $finalOutput = [];
         foreach ($journalData as $journalEntry) {
             if ($journalEntry['url_path'] === $path) {
                 foreach ($journalEntry['reviewer'] as $reviewer) {
@@ -201,39 +202,39 @@ class TeamController extends Controller
             }
         }
 
+        $reviewerJournalName = $finalOutput['journal'] ?? ($setting_web->name ?? 'Jurnal');
 
         $data = [
-            'title' =>  'Reviewer | ' . $setting_web->name,
+            'title' => 'Mitra Bestari (Reviewer) - ' . $reviewerJournalName . ' | ' . $setting_web->name,
             'meta' => [
-                'title' => 'Reviewer | ' . $setting_web->name,
-                'description' => Str::limit(strip_tags($setting_web->about), 155),
-                'keywords' => 'tim reviewer, peer review, ' . $setting_web->name,
+                'title' => 'Mitra Bestari (Reviewer) - ' . $reviewerJournalName . ' | ' . $setting_web->name,
+                'description' => Str::limit('Daftar pakar dan akademisi mitra bestari penelaah naskah jurnal ilmiah ' . $reviewerJournalName, 155),
+                'keywords' => 'mitra bestari ' . $reviewerJournalName . ', peer reviewer, penelaah naskah ahli, reviewer jurnal ilmiah, evaluasi artikel, ' . $setting_web->name,
                 'favicon' => $setting_web->favicon,
                 'og_image' => $setting_web->logo ?? $setting_web->favicon,
                 'og_type' => 'website',
                 'robots' => 'index, follow',
-                'canonical' => route('team.reviewer'),
+                'canonical' => route('team.reviewer', ['journal' => $path]),
             ],
-            'breadcrumbs' =>  [
+            'breadcrumbs' => [
                 [
                     'name' => 'Beranda',
                     'link' => route('home')
                 ],
                 [
-                    'name' => 'Reviewer',
-                    'link' => route('team.reviewer')
+                    'name' => 'Jurnal',
+                    'link' => route('journal.index')
+                ],
+                [
+                    'name' => 'Mitra Bestari',
+                    'link' => route('team.reviewer', ['journal' => $path])
                 ]
             ],
             'setting_web' => SettingWebsite::first(),
             'journals' => Journal::all(),
             'reviewers' => $targetReviewers,
-            // 'issues' => Issue::whereHas('journal', function ($query) use ($path) {
-            //     $query->where('url_path', $path);
-            // })->with(['reviewers' => function ($query) {
-            //     $query->orderBy('name', 'asc');
-            // }])->get(),
         ];
-        // return response()->json($data);
+
         return view('front.pages.team.reviewer', $data);
     }
 

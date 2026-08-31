@@ -15,11 +15,11 @@ class AnnouncementController extends Controller
         $setting_web = SettingWebsite::first();
 
         $data = [
-            'title' => 'Pengumuman | ' . $setting_web->name,
+            'title' => 'Pengumuman & Informasi Resmi | ' . $setting_web->name,
             'meta' => [
-                'title' => 'Pengumuman | ' . $setting_web->name,
-                'description' => Str::limit(strip_tags($setting_web->about), 155),
-                'keywords' => 'pengumuman, informasi, penerbitan, ' . $setting_web->name,
+                'title' => 'Pengumuman & Informasi Resmi | ' . $setting_web->name,
+                'description' => Str::limit('Pengumuman resmi, call for papers, dan edaran terbaru dari ' . $setting_web->name, 155),
+                'keywords' => 'pengumuman resmi, call for papers, edaran akademik, informasi penerbitan, publikasi jurnal, ' . $setting_web->name . ', padang',
                 'favicon' => $setting_web->favicon,
                 'og_image' => $setting_web->logo ?? $setting_web->favicon,
                 'og_type' => 'website',
@@ -48,12 +48,15 @@ class AnnouncementController extends Controller
     {
         $setting_web = SettingWebsite::first();
         $announcement = Announcement::where('slug', $slug)->first();
+        if (!$announcement) {
+            abort(404);
+        }
         $data = [
-            'title' => $announcement->title,
+            'title' => $announcement->title . ' | ' . $setting_web->name,
             'meta' => [
                 'title' => $announcement->title . ' | ' . $setting_web->name,
                 'description' => Str::limit(strip_tags($announcement->content), 155),
-                'keywords' => $setting_web->name . ', ' . $announcement->title . ', pengumuman, informasi, penerbitan',
+                'keywords' => $announcement->title . ', pengumuman resmi, surat edaran, informasi publikasi, ' . $setting_web->name,
                 'favicon' => $announcement->image ?? $setting_web->favicon,
                 'og_image' => $announcement->image ?? ($setting_web->logo ?? $setting_web->favicon),
                 'og_type' => 'article',
@@ -70,7 +73,7 @@ class AnnouncementController extends Controller
                     'link' => route('announcement.index')
                 ],
                 [
-                    'name' => 'Detail',
+                    'name' => Str::limit($announcement->title, 35),
                     'link' => route('announcement.show', $announcement->slug)
                 ]
             ],

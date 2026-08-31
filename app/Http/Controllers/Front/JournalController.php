@@ -15,11 +15,11 @@ class JournalController extends Controller
     {
         $setting_web = SettingWebsite::first();
         $data = [
-            'title' => 'Jurnal | ' . $setting_web->name,
+            'title' => 'Direktori Jurnal Ilmiah | ' . $setting_web->name,
             'meta' => [
-                'title' => 'Jurnal | ' . $setting_web->name,
-                'description' => Str::limit(strip_tags($setting_web->about), 155),
-                'keywords' => 'jurnal ilmiah, publikasi, penelitian, akademik, kota padang, sumatera barat, ' . $setting_web->name,
+                'title' => 'Direktori Jurnal Ilmiah | ' . $setting_web->name,
+                'description' => Str::limit('Direktori publikasi jurnal ilmiah terakreditasi dan peer-reviewed yang dikelola oleh ' . $setting_web->name, 155),
+                'keywords' => 'direktori jurnal ilmiah, jurnal nasional terakreditasi, jurnal sinta, open journal systems, ojs 3, call for papers, submit naskah, publikasi penelitian, ' . $setting_web->name . ', padang, sumatera barat',
                 'favicon' => $setting_web->favicon,
                 'og_image' => $setting_web->logo ?? $setting_web->favicon,
                 'og_type' => 'website',
@@ -35,7 +35,7 @@ class JournalController extends Controller
                     'name' => 'Jurnal',
                     'link' => route('journal.index')
                 ]
-                ],
+            ],
             'journals' => Journal::latest()->get(),
         ];
         return view('front.pages.journal.index', $data);
@@ -48,12 +48,15 @@ class JournalController extends Controller
         if (!$journal) {
             abort(404);
         }
+
+        $indexingStr = is_array($journal->indexing) ? implode(', ', $journal->indexing) : '';
+
         $data = [
-            'title' => $journal->title . ' | ' . $setting_web->name,
+            'title' => $journal->title . ' - Jurnal Ilmiah | ' . $setting_web->name,
             'meta' => [
-                'title' => $journal->title . ' | ' . $setting_web->name,
+                'title' => $journal->title . ' - Jurnal Ilmiah | ' . $setting_web->name,
                 'description' => Str::limit(strip_tags($journal->description), 155),
-                'keywords' => $setting_web->name . ', ' . $journal->title . ', jurnal ilmiah, publikasi, penelitian, kota padang, sumatera barat',
+                'keywords' => 'jurnal ' . $journal->title . ', submit artikel ' . $journal->title . ', call for papers, peer-reviewed journal, OJS, akreditasi jurnal ' . $indexingStr . ', publikasi ilmiah, ' . $setting_web->name . ', padang',
                 'favicon' => $journal->getJournalThumbnail() ?? $setting_web->favicon,
                 'og_image' => $journal->getJournalThumbnail(),
                 'og_type' => 'website',
@@ -70,7 +73,7 @@ class JournalController extends Controller
                     'link' => route('journal.index')
                 ],
                 [
-                    'name' => $journal->url_path,
+                    'name' => Str::limit($journal->title, 35),
                     'link' => route('journal.detail', $journal->url_path)
                 ]
             ],

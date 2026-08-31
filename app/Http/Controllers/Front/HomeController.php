@@ -19,12 +19,15 @@ class HomeController extends Controller
     {
         $setting_web = SettingWebsite::first();
 
+        $siteName = $setting_web->name ?? 'Nagari Sastra';
+        $defaultDesc = 'Nagari Sastra - Lembaga Riset, Publikasi Jurnal Ilmiah Terakreditasi, Penerbitan Buku Ber-ISBN, dan Pusat Pendidikan di Indonesia.';
+
         $data = [
-            'title' => 'Home | ' . $setting_web->name,
+            'title' => $siteName . ' - Publikasi Jurnal Ilmiah, Penerbitan Buku & Riset',
             'meta' => [
-                'title' => 'Home | '.$setting_web->name,
-                'description' => Str::limit(strip_tags($setting_web->about), 155),
-                'keywords' => 'Nagari Sastra, padang, kota padang, sumatera barat, publikasi ilmiah, jurnal, buku, penelitian, pendidikan, penulis, akademisi, mahasiswa, penerbitan, layanan publikasi, mahasiswa, peneliti, akademisi, penerbitan buku, jurnal ilmiah, publikasi akademik, layanan penelitian, platform publikasi, komunitas penulis, sumber daya penelitian',
+                'title' => $siteName . ' - Publikasi Jurnal Ilmiah, Penerbitan Buku & Riset',
+                'description' => !empty($setting_web->about) ? Str::limit(strip_tags($setting_web->about), 155) : $defaultDesc,
+                'keywords' => 'Nagari Sastra, publikasi jurnal ilmiah, penerbitan buku ber-isbn, jurnal terakreditasi sinta, open journal systems, call for papers, layanan riset akademik, konsultasi penelitian, workshop penulisan karya ilmiah, penerbit padang, sumatera barat, indonesia',
                 'favicon' => $setting_web->favicon,
                 'og_image' => $setting_web->logo ?? $setting_web->favicon,
                 'og_type' => 'website',

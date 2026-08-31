@@ -11,7 +11,7 @@
 
         <!-- MOBILE HEADER -->
         <div class="wsmobileheader clearfix">
-            <span class="smllogo"><img src="images/logo-01.png" alt="mobile-logo" /></span>
+            <a href="{{ route('home') }}" class="smllogo"><img src="{{ $setting_web?->getLogo() ?? asset('front/images/logo-01.png') }}" alt="{{ $setting_web->name ?? 'Nagari Sastra' }}" /></a>
             <a id="wsnavtoggle" class="wsanimated-arrow"><span></span></a>
         </div>
 
@@ -22,28 +22,32 @@
 
 
                 <!-- HEADER LOGO -->
-                <div class="desktoplogo"><a href="#hero-13" class="logo-black"><img
-                            src="{{ $setting_web?->getLogo() ?? '' }}" alt="{{ $setting_web->name ?? 'Logo' }}"></a></div>
-                <div class="desktoplogo"><a href="#hero-13" class="logo-white"><img
-                            src="{{ $setting_web?->getLogo() ?? '' }}" alt="{{ $setting_web->name ?? 'Logo' }}"></a></div>
+                <div class="desktoplogo"><a href="{{ route('home') }}" class="logo-black"><img
+                            src="{{ $setting_web?->getLogo() ?? '' }}" alt="{{ $setting_web->name ?? 'Nagari Sastra' }}"></a></div>
+                <div class="desktoplogo"><a href="{{ route('home') }}" class="logo-white"><img
+                            src="{{ $setting_web?->getLogo() ?? '' }}" alt="{{ $setting_web->name ?? 'Nagari Sastra' }}"></a></div>
 
 
                 <!-- MAIN MENU -->
-                <nav class="wsmenu clearfix">
+                <nav class="wsmenu clearfix" aria-label="Main Navigation">
                     <ul class="wsmenu-list nav-theme-hover">
 
                         <li class="nl-simple" aria-haspopup="true"><a href="{{ route('home') }}">Home</a></li>
-                        <!-- DROPDOWN MENU -->
-                        <li aria-haspopup="true"><a href="#">Jurnal <span class="wsarrow"></span></a>
+                        <!-- DROPDOWN MENU: PUBLIKASI -->
+                        <li aria-haspopup="true"><a href="#">Publikasi <span class="wsarrow"></span></a>
                             <ul class="sub-menu">
-                                @foreach ($journals as $journal)
-                                    <li aria-haspopup="true"><a
-                                            href="{{ route('journal.detail', $journal->url_path) }}">{{ $journal->title }}</a>
-                                    </li>
-                                @endforeach
+                                <li aria-haspopup="true"><a href="{{ route('book.index') }}">Buku</a></li>
+                                <li aria-haspopup="true"><a href="{{ route('journal.index') }}">Jurnal <span class="wsarrow-sub"></span></a>
+                                    <ul class="sub-menu">
+                                        @foreach ($journals as $journal)
+                                            <li aria-haspopup="true"><a
+                                                    href="{{ route('journal.detail', $journal->url_path) }}">{{ $journal->title }}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
                             </ul>
                         </li>
-                        <li class="nl-simple" aria-haspopup="true"><a href="{{ route('book.index') }}">Buku</a></li>
 
 
                         {{-- <li aria-haspopup="true"><a href="#">Pages <span class="wsarrow"></span></a>

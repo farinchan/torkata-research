@@ -1,5 +1,27 @@
 @extends('front.app')
 
+@section('seo')
+@php
+    $journalSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'Periodical',
+        'name' => $journal->title,
+        'description' => Str::limit(strip_tags($journal->description), 160),
+        'url' => route('journal.detail', $journal->url_path),
+        'publisher' => [
+            '@type' => 'Organization',
+            'name' => $setting_web->name ?? config('app.name'),
+        ],
+    ];
+    if ($journal->getJournalThumbnail()) {
+        $journalSchema['image'] = Str::startsWith($journal->getJournalThumbnail(), ['http://', 'https://']) ? $journal->getJournalThumbnail() : url($journal->getJournalThumbnail());
+    }
+@endphp
+<script type="application/ld+json">
+{!! json_encode($journalSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+</script>
+@endsection
+
 @section('content')
     <!-- PROJECT DETAILS-2
        ============================================= -->
