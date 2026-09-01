@@ -43,12 +43,20 @@
                            </div>
                        </div>
 
-                       <!-- Title -->
-                       <h2 class="h2-sm" style="font-size: 1.4rem;">
-                           @isset($title)
-                               {{ $title }}
-                           @endisset
-                       </h2>
+                        <!-- Title -->
+                        @if(request()->routeIs('news.detail', 'book.show', 'product.show', 'event.show', 'announcement.show', 'journal.detail'))
+                            <p class="h2-sm font-weight-bold mb-0" style="font-size: 1.4rem; color: #fff;">
+                                @isset($title)
+                                    {{ $title }}
+                                @endisset
+                            </p>
+                        @else
+                            <h1 class="h2-sm mb-0" style="font-size: 1.4rem; color: #fff;">
+                                @isset($title)
+                                    {{ $title }}
+                                @endisset
+                            </h1>
+                        @endif
 
                    </div>
                </div>

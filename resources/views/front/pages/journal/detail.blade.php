@@ -40,13 +40,13 @@
                             <div class="hover-overlay">
 
                                 <!-- Image -->
-                                <img class="img-fluid" src="{{ $journal->getJournalThumbnail() }}" alt="gallery-image" />
+                                <img class="img-fluid" src="{{ $journal->getJournalThumbnail() }}" alt="{{ $journal->title }}" loading="lazy" decoding="async" />
                                 <div class="item-overlay"></div>
 
                                 <!-- Image Zoom -->
                                 <div class="image-description white-color">
                                     <div class="image-data ico-70">
-                                        <a class="image-link" href="{{ $journal->getJournalThumbnail() }}"><span
+                                        <a class="image-link" href="{{ $journal->getJournalThumbnail() }}" title="{{ $journal->title }}"><span
                                                 class="flaticon-search"></span></a>
                                     </div>
                                 </div>
@@ -58,7 +58,7 @@
 
                     </div>
                     <div class="mt-20">
-                        <a href="{{ $journal->url }}" class="btn btn-md btn-tra-grey rose-hover w-100 d-block">
+                        <a href="{{ $journal->url }}" class="btn btn-md btn-tra-grey rose-hover w-100 d-block" target="_blank" rel="noopener noreferrer">
                             Visit Journal Website
                         </a>
                     </div>
@@ -77,7 +77,7 @@
 
                         <!-- PROJECT TITLE -->
                         <div class="project-title">
-                            <h3 class="h3-lg">{{ $journal->title }}</h3>
+                            <h1 class="h3-lg">{{ $journal->title }}</h1>
                         </div>
 
                         <!-- PROJECT DETAILS -->

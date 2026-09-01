@@ -59,7 +59,7 @@
 
 
                             <!-- TITLE -->
-                            <h4 class="h4-lg">{{ $news->title }}</h4>
+                            <h1 class="h4-lg">{{ $news->title }}</h1>
 
 
 
@@ -68,7 +68,7 @@
 
                                 <!-- Author Avatar -->
                                 <div class="post-author-avatar" style="display: inline-block; float: left;;">
-                                    <img src="{{ $news->user->getPhoto() }}" alt="author-avatar"
+                                    <img src="{{ $news->user->getPhoto() }}" alt="{{ $news->user->name }}"
                                         style="width: 50px; height: 50px; object-fit: cover; border-radius: 100%; margin-right: 20px;">
                                 </div>
 
@@ -103,7 +103,9 @@
                                     $tags = explode(',', $news->meta_keywords ?? '');
                                 @endphp
                                 @foreach ($tags ?? [] as $tag)
-                                    <span><a href="#">{{ $tag }}</a></span>
+                                    @if(trim($tag))
+                                        <span><a href="{{ route('news.index', ['search' => trim($tag)]) }}">{{ trim($tag) }}</a></span>
+                                    @endif
                                 @endforeach
                             </div>
 
@@ -201,9 +203,9 @@
                                                 <div class="media">
 
                                                     <!-- Comment-2 Avatar -->
-                                                    <a href="#" class="mr-25">
-                                                        <img src="{{ $reply->user->getPhoto() }}" alt="comment-avatar">
-                                                    </a>
+                                                    <div class="mr-25">
+                                                        <img src="{{ $reply->user->getPhoto() }}" alt="{{ $reply->user->name }}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 100%;">
+                                                    </div>
 
                                                     <div class="media-body">
 
@@ -437,11 +439,13 @@
 
                             <!-- BLOG POST IMAGE -->
                             <div class="blog-post-img rel">
-                                <div class="hover-overlay">
-                                    <img class="img-fluid" src="{{ $news_trend->getThumbnail() }}"
-                                        alt="blog-post-image" />
-                                    <div class="item-overlay"></div>
-                                </div>
+                                <a href="{{ route('news.detail', $news_trend->slug) }}">
+                                    <div class="hover-overlay">
+                                        <img class="img-fluid" src="{{ $news_trend->getThumbnail() }}"
+                                            alt="{{ $news_trend->title }}" loading="lazy" decoding="async" />
+                                        <div class="item-overlay"></div>
+                                    </div>
+                                </a>
                             </div>
 
                             <!-- BLOG POST TEXT -->
@@ -453,7 +457,9 @@
                                 </p>
 
                                 <!-- Post Title -->
-                                <h5 class="h5-xs">{{ $news_trend->title }}</h5>
+                                <h5 class="h5-xs">
+                                    <a href="{{ route('news.detail', $news_trend->slug) }}">{{ $news_trend->title }}</a>
+                                </h5>
 
                                 <!-- Author Data -->
                                 <div class="post-author">

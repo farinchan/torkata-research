@@ -23,7 +23,9 @@
                                     <!-- BLOG POST IMAGE -->
                                     <div class="col-md-5">
                                         <div class="blog-post-img">
-                                            <img class="img-fluid" src="{{ $n->getThumbnail() }}" alt="blog-post-image">
+                                            <a href="{{ route('news.detail', $n->slug) }}">
+                                                <img class="img-fluid" src="{{ $n->getThumbnail() }}" alt="{{ $n->title }}" loading="lazy" decoding="async">
+                                            </a>
                                         </div>
                                     </div>
 
@@ -41,7 +43,7 @@
 
                                             <!-- Post Link -->
                                             <h5 class="h5-md">
-                                                <a href="single-post.html">
+                                                <a href="{{ route('news.detail', $n->slug) }}">
                                                     {{ $n->title }}
                                                 </a>
                                             </h5>

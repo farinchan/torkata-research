@@ -66,7 +66,7 @@
                         </div>
 
                         <!-- TITLE -->
-                        <h4 class="h4-lg mb-20">{{ $event->name }}</h4>
+                        <h1 class="h4-lg mb-20">{{ $event->name }}</h1>
 
                         <!-- INFO -->
                         <div class="bg-lightgrey radius-04 p-4 mb-30">

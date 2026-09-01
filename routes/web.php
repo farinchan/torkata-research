@@ -239,6 +239,8 @@ Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])
 Route::get('/syarat-ketentuan', [PageController::class, 'terms'])->name('page.terms');
 Route::get('/kebijakan-privasi', [PageController::class, 'privacy'])->name('page.privacy');
 Route::get('/faq', [PageController::class, 'faq'])->name('page.faq');
+Route::permanentRedirect('/terms', '/syarat-ketentuan');
+Route::permanentRedirect('/privacy', '/kebijakan-privasi');
 
 Route::prefix('event')->name('event.')->group(function () {
     Route::get('/', [EventController::class, 'index'])->name('index');

@@ -151,7 +151,7 @@
                     <div class="posts-wrapper pr-25">
 
                         <!-- TITLE -->
-                        <h4 class="h4-lg mb-15" style="line-height: 1.4;">{{ $announcement->title }}</h4>
+                        <h1 class="h4-lg mb-15" style="line-height: 1.4;">{{ $announcement->title }}</h1>
 
                         <!-- META INFO -->
                         <div class="info-card mb-30">

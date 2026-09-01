@@ -172,7 +172,7 @@
                                     </a>
                                 </p>
 
-                                <h2 class="h4-lg mb-10">{{ $book->title }}</h2>
+                                <h1 class="h4-lg mb-10">{{ $book->title }}</h1>
                                 <p class="p-md grey-color mb-20">
                                     <span class="flaticon-user mr-1"></span>
                                     {{ $book->author ?: '-' }}

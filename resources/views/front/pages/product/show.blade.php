@@ -73,10 +73,10 @@
                             </div>
                             <div class="col-md-7">
                                 <p class="post-tag txt-upcase mb-10">
-                                    <a class="theme-color">{{ $product->category->name ?? '' }}</a>
+                                    <a href="{{ route('product.index') }}" class="theme-color">{{ $product->category->name ?? 'Produk' }}</a>
                                 </p>
 
-                                <h2 class="h4-lg mb-10">{{ $product->name }}</h2>
+                                <h1 class="h4-lg mb-10">{{ $product->name }}</h1>
 
                                 @if($product->short_description)
                                     <p class="p-md grey-color mb-20">{{ $product->short_description }}</p>
