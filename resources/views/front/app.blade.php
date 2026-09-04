@@ -26,7 +26,7 @@
     <!-- FAVICON -->
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('pwa-icons/icon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('pwa-icons/icon-16x16.png') }}">
-    <link rel="shortcut icon" href="{{ $setting_web?->favicon ?? asset('favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ url($setting_web?->favicon ?? asset('favicon.ico')) }}">
     <link rel="alternate" type="application/xml" title="OAI-PMH" href="{{ route('oai-pmh', ['verb' => 'Identify']) }}">
 
     <!-- PWA / WEB APP MANIFEST & META TAGS -->
