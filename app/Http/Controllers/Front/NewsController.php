@@ -68,7 +68,7 @@ class NewsController extends Controller
             'meta' => [
                 'title' => $news->title . ' | ' . $setting_web->name,
                 'description' => Str::limit(strip_tags($news->content), 155),
-                'keywords' => $news->title . ', berita ' . ($news->category->name ?? 'ilmiah') . ', artikel penelitian, ' . ($news->user?->name ?? 'penulis') . ', publikasi, riset, ' . $setting_web->name,
+                'keywords' => $news->meta_keywords . ', ' . $news->title . ', berita ' . ($news->category->name ?? 'ilmiah') . ', artikel penelitian, ' . ($news->user?->name ?? 'penulis') . ', publikasi, riset, ' . $setting_web->name,
                 'favicon' => $news->thumbnail ?? $setting_web->favicon,
                 'author' => $news->user?->name ?? $setting_web->name,
                 'og_image' => $news->getThumbnail(),
